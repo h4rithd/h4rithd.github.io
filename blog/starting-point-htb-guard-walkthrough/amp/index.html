@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Guard Walkthrough | HTB</title>
+
+    <meta name="description" content="After the Markup Walkthrough, Here I&#x27;m with Guard, so... let&#x27;s hack and grab the flags.">
+    <link rel="icon" href="../../content/images/2021/06/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="h4rithd.com">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Guard Walkthrough | HTB">
+    <meta property="og:description" content="After the Markup Walkthrough, Here I&#x27;m with Guard, so... let&#x27;s hack and grab the flags.">
+    <meta property="og:url" content="https://h4rithd.com/blog/starting-point-htb-guard-walkthrough/">
+    <meta property="og:image" content="https://h4rithd.com/blog/content/images/2021/06/GurdBG.jpg">
+    <meta property="article:published_time" content="2021-05-29T16:59:00.000Z">
+    <meta property="article:modified_time" content="2023-11-15T14:04:50.000Z">
+    <meta property="article:tag" content="Starting Point Walkthrough">
+    <meta property="article:tag" content="Guard Walkthrough">
+    <meta property="article:tag" content="h4rithd">
+    <meta property="article:tag" content="Harith Dilshan">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guard Walkthrough | HTB">
+    <meta name="twitter:description" content="After the Markup Walkthrough, Here I&#x27;m with Guard, so... let&#x27;s hack and grab the flags.">
+    <meta name="twitter:url" content="https://h4rithd.com/blog/starting-point-htb-guard-walkthrough/">
+    <meta name="twitter:image" content="https://h4rithd.com/blog/content/images/2021/06/GurdBG.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Harith Dilshan">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Starting Point Walkthrough, Guard Walkthrough, h4rithd, Harith Dilshan">
+    <meta name="twitter:site" content="@h4rithd">
+    <meta name="twitter:creator" content="@h4rithd">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1035">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "h4rithd.com",
+        "url": "https://h4rithd.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2021/06/Logo.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harith Dilshan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://h4rithd.com/blog/content/images/2023/11/5-1.jpeg",
+            "width": 2000,
+            "height": 2000
+        },
+        "url": "https://h4rithd.com/blog/author/h4rithd/",
+        "sameAs": [
+            "https://h4rithd.com/",
+            "https://twitter.com/h4rithd"
+        ]
+    },
+    "headline": "Guard Walkthrough | HTB",
+    "url": "https://h4rithd.com/blog/starting-point-htb-guard-walkthrough/",
+    "datePublished": "2021-05-29T16:59:00.000Z",
+    "dateModified": "2023-11-15T14:04:50.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://h4rithd.com/blog/content/images/2021/06/GurdBG.jpg",
+        "width": 1920,
+        "height": 1035
+    },
+    "keywords": "Starting Point Walkthrough, Guard Walkthrough, h4rithd, Harith Dilshan",
+    "description": "After the Markup Walkthrough, Here I&#x27;m with Guard, so... let&#x27;s hack and grab the flags.\n\nAs I mentioned before, the starting point machines are a series of 9 machines rated as &quot;Very Easy&quot; and should be rooted in a sequence. So it means, if you need to go through this box, first of all you must have a complete Markup machine.\n\nEnough talks, 🥱 Let’s Get It Started 🐱‍💻\n\n⚠ Disclaimers: No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedure to grab the flags",
+    "mainEntityOfPage": "https://h4rithd.com/blog/starting-point-htb-guard-walkthrough/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.72">
+    <link rel="alternate" type="application/rss+xml" title="h4rithd.com" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #0065a3;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="https://h4rithd.com/blog/content/images/2021/06/favicon.ico" width="50" height="50" layout="fixed" alt="h4rithd.com"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Guard Walkthrough</h1>
+                <section class="post-meta">
+                    Harith Dilshan -
+                    <time class="post-date" datetime="2021-05-29">29 May 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://h4rithd.com/blog/content/images/2021/06/GurdBG.jpg" width="600" height="340" layout="responsive" 
+                alt="Guard Walkthrough"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>After the Markup Walkthrough, Here I'm with Guard, so... let's hack and grab the flags.</p><hr></hr><p>As I mentioned before, the starting point machines are a series of 9 machines rated as "<strong>Very Easy</strong>" and should be <strong>rooted in a sequence</strong>. So it means, if you need to go through this box, first of all you must have a complete <a href="https://h4rithd.com/blog/starting-point-htb-markup-walkthrough/index.html?ref=172.16.211.133">Markup</a> machine.</p><p>Enough talks, 🥱 Let’s Get It Started 🐱‍💻</p><blockquote><strong><em>⚠ Disclaimers: </em><em>No flags (user/root) are shown in this writeup (as usual in writeups), so follow the procedure to grab the flags! 🐱‍👤</em></strong></blockquote>
+
+
+<div class="elfsight-app-a4de7430-6c0c-44b8-aada-9b9ac759e396"></div>
+
+<hr></hr><h2 id="00-start-machine-%E2%80%A6"><strong>00. Start Machine …</strong></h2><p>To start the machine, Just click on "<strong>Spawn Machine</strong>".</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-177.png" class="kg-image" width="1000" height="452" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-177.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-177.png 1000w" layout="responsive"></amp-img></figure><p>Then you can see the <strong>IP </strong>address for that machine.<strong>🤠</strong></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-178.png" class="kg-image" width="423" height="462" layout="responsive"></amp-img></figure><p>Before going to enumeration steps we can simply ping to the IP address and check whether  the VPN is connected and the machine is alive. Sometimes the machines might "Disable" ping requests when passing through the firewall. But in most cases ping will be a success! 🙂</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-179.png" class="kg-image" width="1484" height="554" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-179.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-179.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-179.png 1484w" layout="responsive"></amp-img></figure><p>As a ping result, its <code>TTL=63</code>. There is only one route between machine and us (VPN). So definitely, it will be a <code>Linux</code> machine.</p><hr></hr><h2 id="01-enumeration-first-%E2%80%A6"><strong>01. Enumeration First …</strong></h2><h3 id="011-fast-ports-scan"><strong>01.1 Fast ports scan</strong></h3><p>As usual, run Nmap fast scan for all TCP ports to identify the ports which are open.</p><pre><code class="language-bash">nmap -n -vv --open -T4 -p- -oN AllPorts.nmap 10.10.10.50</code></pre><pre><code class="language-bash">-n  : Never do DNS resolution
+-vv	: Extra verbosity
+--open	: Output only open ports
+-p-	: Full TCP ports range (65535)
+-T4	: Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network</code></pre><p>Here is the output 👇</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-180.png" class="kg-image" width="1000" height="630" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-180.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-180.png 1000w" layout="responsive"></amp-img></figure><p>What the heck! only SSH?? Did anything go wrong?? 🤷‍♂️🤷‍♂️</p><h3 id="012-run-nmap-scripting-engine"><strong>01.2 Run Nmap Scripting Engine</strong></h3><p>To get the best result, we can run the <code>Nmap Scripting Engine</code> for all open ports. Now we know all of the open ports and therefore, we can point out and run the script engine as fast as possible.</p><pre><code class="language-bash">nmap -sV -sC -oN DetailPorts.nmap -p 22 10.10.10.50</code></pre><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-181.png" class="kg-image" width="1000" height="491" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-181.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-181.png 1000w" layout="responsive"></amp-img></figure><p>It's only SSH port here. By looking at the SSH version <a href="https://launchpad.net/ubuntu/+source/openssh/1:7.6p1-4ubuntu0.3?ref=172.16.211.133">information</a> from Nmap results, we can say that OS is <strong>"Ubuntu Bionic".</strong></p><p>Now our attack vector is pretty small right? So let's search exploits for "OpenSSH 7.6p1".</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-182.png" class="kg-image" width="1000" height="311" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-182.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-182.png 1000w" layout="responsive"></amp-img></figure><p>Nothing found. The "<strong>OpenSSH &lt; 7.7 - User Enumeration (2)</strong>" is holy crap!! It runs on python2. I got so many dependency error and after fixing all module errors, what I got was nothing.😫😫</p><p>Since the all the machines are in sequence.. What if we try to use the SSH key we found in the previous machine to login as daniel (the previous Markup Machine)</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-183.png" class="kg-image" width="1178" height="294" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-183.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-183.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-183.png 1178w" layout="responsive"></amp-img></figure><p>I copied the previous SSH key to my current directory and changed the permission as well. So let's try to login. Remember to use <code>Daniel</code> user as <code>daniel</code> because this is Linux box and all Linux machines has one rule: the username can not use capital letters.</p><pre><code class="language-bash">ssh -i id_rsa daniel@10.10.10.50</code></pre><p>And we successfully logged in to the system.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-184.png" class="kg-image" width="1000" height="492" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-184.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-184.png 1000w" layout="responsive"></amp-img></figure><p>But we can't view the user.txt.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-185.png" class="kg-image" width="1256" height="370" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-185.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-185.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-185.png 1256w" layout="responsive"></amp-img></figure><hr></hr><h2 id="02-foothold"><strong>02. Foothold</strong></h2><p>While you do the enumeration on this box you will note that we can not run some commands like python, cat and find likewise. It means some commands are restricted. 🔴🔴</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-186.png" class="kg-image" width="600" height="339" srcset="https://h4rithd.com/blog/content/images/2021/06/image-186.png 600w" layout="responsive"></amp-img></figure><p>After some enumerations and by going through the box I found a pretty cool trick and here it is.💡</p><p>Do you trust me if I say we can use <strong>man </strong>to read the user flag?? 🤔🤔 Fortunately, the <strong>man </strong>command can be used to spawn a bash shell. Follow me to grab user.txt.</p><p>Open the man page for any tool like <code>man ls</code> . Then press <code>shift + 1</code>  , it means '<strong>!</strong>' mark. Then type <code>bash</code> . The full command will be like <strong><code>!bash</code>  </strong>then hit enter. 😎😎 You think nothing happened? But then try to view user flag again using cat. This time you will succeed!!</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-187.png" class="kg-image" width="1016" height="332" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-187.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-187.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-187.png 1016w" layout="responsive"></amp-img></figure><p>Cool!! It's time to be the root!!</p><hr></hr><h2 id="03-privilege-escalation"><strong>03. Privilege Escalation</strong></h2><p>To do privilege escalations <a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS?ref=172.16.211.133">linPEAS</a> will help a lot. But if you are going to use it here, you will have to face a lot of issues. Therefore I will enumerate manually again. And we can find a readable <code>shadow</code> backup in <code>/var/backups</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-188.png" class="kg-image" width="1556" height="772" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-188.png 600w, https://h4rithd.com/blog/content/images/size/w1000/2021/06/image-188.png 1000w, https://h4rithd.com/blog/content/images/2021/06/image-188.png 1556w" layout="responsive"></amp-img></figure><p>Let's open that file.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-189.png" class="kg-image" width="1000" height="199" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-189.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-189.png 1000w" layout="responsive"></amp-img></figure><p>Here we only need root hash, so copy it to our host machine. Then we can hand over the rest of the work to my pet <a href="https://hashcat.net/hashcat/?ref=172.16.211.133">Hashcat</a> 😻😻</p><pre><code class="language-bash">echo "$6$KIP2PX8O$7VF4mj1i.w/.sIOwyeN6LKnmeaFTgAGZtjBjRbvX4pEHvx1XUzXLTBBu0jRLPeZS.69qNrPgHJ0yvc3N82hY31" &gt;hash
+
+hashcat -m 1800 --force hash /usr/share/wordlists/rockyou.txt
+</code></pre><p>While it's running, the Hashcat will prompt you like below; then press <code>s</code></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-190.png" class="kg-image" width="1000" height="648" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-190.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-190.png 1000w" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-65.png" class="kg-image" width="500" height="575" layout="responsive"></amp-img></figure><p>After it succeeded, you will see the cracked password and it is <strong><code>password#1</code></strong></p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-191.png" class="kg-image" width="1000" height="717" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-191.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-191.png 1000w" layout="responsive"></amp-img></figure><p>Then we can use this password to <code>su root</code> or you can use SSH like this.👇👇</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-192.png" class="kg-image" width="1000" height="690" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-192.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-192.png 1000w" layout="responsive"></amp-img></figure><p>We got root flag.</p><figure class="kg-card kg-image-card"><amp-img src="https://h4rithd.com/blog/content/images/2021/06/image-193.png" class="kg-image" width="854" height="724" srcset="https://h4rithd.com/blog/content/images/size/w600/2021/06/image-193.png 600w, https://h4rithd.com/blog/content/images/2021/06/image-193.png 854w" layout="responsive"></amp-img></figure><p>Now we have only one box left on the starting point path. </p><p>So... I’ll see you in the next box! <a href="https://h4rithd.com/blog/starting-point-htb-base-walkthrough/index.html?ref=172.16.211.133"><strong>Base</strong></a> 🙋‍♂️🙋‍♂️</p><p><strong>Find me on <a href="https://twitter.com/h4rithd?ref=172.16.211.133" rel="noreferrer">@twitter</a></strong> </p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://h4rithd.com/blog/content/images/2021/06/favicon.ico" width="50" height="50" layout="fixed" alt="h4rithd.com"></amp-img>
+        <h3>h4rithd.com</h3>
+            <p>- Penetration Tester | Ethical Hacker | Security Researcher -</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
