@@ -1,6 +1,0 @@
-User-agent: *
-Sitemap: https://h4rithd.com/blog/sitemap.xml
-Disallow: /ghost/
-Disallow: /p/
-Disallow: /email/
-Disallow: /r/
